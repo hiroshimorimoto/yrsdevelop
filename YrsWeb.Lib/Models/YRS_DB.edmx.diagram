@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2e677f702fc4420ab95aedbcd9aa5f58" Name="Diagram1">
+        <EntityTypeShape EntityType="YRS_DBModel.Provider_M" Width="1.5" PointX="2.5" PointY="0.75" />
+        <EntityTypeShape EntityType="YRS_DBModel.PassResetRequest" Width="1.5" PointX="0.5" PointY="1.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="YRS_DBModel.PlanCategory" Width="1.5" PointX="6.125" PointY="4.25" />
+        <EntityTypeShape EntityType="YRS_DBModel.PlanArea" Width="1.5" PointX="6.125" PointY="2.75" />
+        <EntityTypeShape EntityType="YRS_DBModel.PlanImage" Width="1.5" PointX="6.125" PointY="6" />
+        <EntityTypeShape EntityType="YRS_DBModel.PlanDateStr" Width="1.5" PointX="8.625" PointY="0.875" />
+        <EntityTypeShape EntityType="YRS_DBModel.PlanInfo" Width="1.5" PointX="4.25" PointY="0.75" />
+        <EntityTypeShape EntityType="YRS_DBModel.PublicPlanInfo" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="YRS_DBModel.PlanDate" Width="1.5" PointX="6.125" PointY="0.625" />
+        <EntityTypeShape EntityType="YRS_DBModel.Category_M" Width="1.5" PointX="0.5" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="YRS_DBModel.Manager_M" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="YRS_DBModel.ApplicationHeader" Width="1.5" PointX="3.625" PointY="9.375" />
+        <EntityTypeShape EntityType="YRS_DBModel.ApplicationPlan" Width="1.5" PointX="5.75" PointY="10" />
+        <EntityTypeShape EntityType="YRS_DBModel.ApplicationUser" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="YRS_DBModel.PlanAppInfo" Width="1.5" PointX="7.5" PointY="8.875" />
+        <EntityTypeShape EntityType="YRS_DBModel.ApplicationPayment" Width="1.5" PointX="10.375" PointY="6.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

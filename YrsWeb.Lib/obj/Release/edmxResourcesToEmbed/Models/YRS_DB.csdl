@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="YRS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="YRS_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Provider_M" EntityType="YRS_DBModel.Provider_M" />
+    <EntitySet Name="PassResetRequest" EntityType="YRS_DBModel.PassResetRequest" />
+    <EntitySet Name="PlanCategory" EntityType="YRS_DBModel.PlanCategory" />
+    <EntitySet Name="PlanArea" EntityType="YRS_DBModel.PlanArea" />
+    <EntitySet Name="PlanImage" EntityType="YRS_DBModel.PlanImage" />
+    <EntitySet Name="PlanDateStr" EntityType="YRS_DBModel.PlanDateStr" />
+    <EntitySet Name="PlanInfo" EntityType="YRS_DBModel.PlanInfo" />
+    <EntitySet Name="PublicPlanInfo" EntityType="YRS_DBModel.PublicPlanInfo" />
+    <EntitySet Name="PlanDate" EntityType="YRS_DBModel.PlanDate" />
+    <EntitySet Name="Category_M" EntityType="YRS_DBModel.Category_M" />
+    <EntitySet Name="Manager_M" EntityType="YRS_DBModel.Manager_M" />
+    <EntitySet Name="ApplicationHeader" EntityType="YRS_DBModel.ApplicationHeader" />
+    <EntitySet Name="ApplicationPlan" EntityType="YRS_DBModel.ApplicationPlan" />
+    <EntitySet Name="ApplicationUser" EntityType="YRS_DBModel.ApplicationUser" />
+    <EntitySet Name="PlanAppInfo" EntityType="YRS_DBModel.PlanAppInfo" />
+    <EntitySet Name="ApplicationPayment" EntityType="YRS_DBModel.ApplicationPayment" />
+  </EntityContainer>
+  <EntityType Name="Provider_M">
+    <Key>
+      <PropertyRef Name="ProviderId" />
+    </Key>
+    <Property Name="ProviderId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="RegistStatus" Type="Byte" Nullable="false" />
+    <Property Name="ProviderPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderIndustry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TantoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TantoMailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="TantoPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PreRegistDate" Type="DateTime" Precision="3" />
+    <Property Name="ProRegistDate" Type="DateTime" Precision="3" />
+    <Property Name="RegistMailCount" Type="Byte" Nullable="false" />
+    <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+    <Property Name="PersonalinfoManagement" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PassResetRequest">
+    <Key>
+      <PropertyRef Name="RequestID" />
+    </Key>
+    <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RequestDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ExpirationDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RequestType" Type="Byte" Nullable="false" />
+    <Property Name="RequestStatus" Type="Byte" Nullable="false" />
+    <Property Name="MailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="AuthCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PlanCategory">
+    <Key>
+      <PropertyRef Name="PlanId" />
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="PlanId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlanArea">
+    <Key>
+      <PropertyRef Name="PlanId" />
+      <PropertyRef Name="AreaId" />
+    </Key>
+    <Property Name="PlanId" Type="Int32" Nullable="false" />
+    <Property Name="AreaId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlanImage">
+    <Key>
+      <PropertyRef Name="PlanId" />
+      <PropertyRef Name="ImageNo" />
+    </Key>
+    <Property Name="PlanId" Type="Int32" Nullable="false" />
+    <Property Name="ImageNo" Type="Byte" Nullable="false" />
+    <Property Name="ImageLevel" Type="Byte" Nullable="false" />
+    <Property Name="SortOrder" Type="Byte" Nullable="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PlanDateStr">
+    <Key>
+      <PropertyRef Name="PlanId" />
+      <PropertyRef Name="AcceptDate" />
+    </Key>
+    <Property Name="PlanId" Type="Int32" Nullable="false" />
+    <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AcceptDateStr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PlanInfo">
+    <Key>
+      <PropertyRef Name="PlanId" />
+    </Key>
+    <Property Name="PlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProviderId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PublicStatus" Type="Byte" Nullable="false" />
+    <Property Name="PlanTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PlanStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PlanEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PublicStartDate" Type="DateTime" Precision="0" />
+    <Property Name="PublicEndDate" Type="DateTime" Precision="0" />
+    <Property Name="PlanAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Access" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Overview" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Contents" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="Fee_Adult" Type="Int32" Nullable="false" />
+    <Property Name="Fee_Child" Type="Int32" Nullable="false" />
+    <Property Name="Fee_Infant" Type="Int32" Nullable="false" />
+    <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+    <Property Name="MeetingPlace" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="TimeRequired" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MaxApplicantsNum" Type="Int16" />
+    <Property Name="PlanCourse" Type="String" MaxLength="256" FixedLength="true" Unicode="true" />
+    <Property Name="HiddenFlg" Type="Boolean" Nullable="false" />
+    <Property Name="CancelPolicy" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="AllPersonFlg" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="PublicPlanInfo">
+    <Key>
+      <PropertyRef Name="ProviderName" />
+      <PropertyRef Name="PlanId" />
+      <PropertyRef Name="ProviderId" />
+      <PropertyRef Name="PublicStatus" />
+      <PropertyRef Name="PlanTitle" />
+      <PropertyRef Name="PlanStartDate" />
+      <PropertyRef Name="PlanEndDate" />
+      <PropertyRef Name="Fee_Adult" />
+      <PropertyRef Name="Fee_Child" />
+      <PropertyRef Name="Fee_Infant" />
+      <PropertyRef Name="DeleteFlg" />
+      <PropertyRef Name="HiddenFlg" />
+    </Key>
+    <Property Name="ProviderName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderIndustry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TantoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TantoMailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="TantoPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PlanId" Type="Int32" Nullable="false" />
+    <Property Name="ProviderId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PublicStatus" Type="Byte" Nullable="false" />
+    <Property Name="PlanTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PlanStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PlanEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PublicStartDate" Type="DateTime" Precision="0" />
+    <Property Name="PublicEndDate" Type="DateTime" Precision="0" />
+    <Property Name="PlanAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Access" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Overview" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Contents" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="Fee_Adult" Type="Int32" Nullable="false" />
+    <Property Name="Fee_Child" Type="Int32" Nullable="false" />
+    <Property Name="Fee_Infant" Type="Int32" Nullable="false" />
+    <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+    <Property Name="MeetingPlace" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="TimeRequired" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MaxApplicantsNum" Type="Int16" />
+    <Property Name="MinAcceptDate" Type="DateTime" Precision="0" />
+    <Property Name="MaxAcceptDate" Type="DateTime" Precision="0" />
+    <Property Name="MaxFee_Adult" Type="Int32" Nullable="false" />
+    <Property Name="MinFee_Adult" Type="Int32" Nullable="false" />
+    <Property Name="MaxFee_Child" Type="Int32" Nullable="false" />
+    <Property Name="MinFee_Infant" Type="Int32" Nullable="false" />
+    <Property Name="MinFee_Child" Type="Int32" Nullable="false" />
+    <Property Name="MaxFee_Infant" Type="Int32" Nullable="false" />
+    <Property Name="PlanCourse" Type="String" MaxLength="256" FixedLength="true" Unicode="true" />
+    <Property Name="HiddenFlg" Type="Boolean" Nullable="false" />
+    <Property Name="CancelPolicy" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="AllPersonFlg" Type="Boolean" />
+    <Property Name="TopImageNo" Type="Byte" />
+  </EntityType>
+  <EntityType Name="PlanDate">
+    <Key>
+      <PropertyRef Name="PlanId" />
+      <PropertyRef Name="AcceptDate" />
+    </Key>
+    <Property Name="PlanId" Type="Int32" Nullable="false" />
+    <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fee_Adult" Type="Int32" />
+    <Property Name="Fee_Child" Type="Int32" />
+    <Property Name="Fee_Infant" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Category_M">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryLevel" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manager_M">
+    <Key>
+      <PropertyRef Name="ManagerId" />
+    </Key>
+    <Property Name="ManagerId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ManagerPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="SMTP_ServerAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="SMTP_Port" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SMTP_User" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="SMTP_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ApplicationHeader">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApplicationStatus" Type="Byte" Nullable="false" />
+    <Property Name="PaymentMethods" Type="Byte" Nullable="false" />
+    <Property Name="Num_Adult" Type="Int16" Nullable="false" />
+    <Property Name="Num_Child" Type="Int16" Nullable="false" />
+    <Property Name="Num_Infant" Type="Int16" Nullable="false" />
+    <Property Name="Transportation" Type="Byte" Nullable="false" />
+    <Property Name="CheckInTime" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="PointCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PointCardFlg" Type="Boolean" Nullable="false" />
+    <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="27" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ApplicationPlan">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="PlanId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+    <Property Name="PlanId" Type="Int32" Nullable="false" />
+    <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Fee_Adult" Type="Int32" Nullable="false" />
+    <Property Name="Fee_Child" Type="Int32" Nullable="false" />
+    <Property Name="Fee_Infant" Type="Int32" Nullable="false" />
+    <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationUser">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="UserNo" />
+    </Key>
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="UserName1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserRuby1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserRuby2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="UserAddress1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UserAddress2" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Age" Type="Byte" Nullable="false" />
+    <Property Name="UserPhone1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserPhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserMailAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="Byte" Nullable="false" />
+    <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PlanAppInfo">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="PlanId" />
+      <PropertyRef Name="ProviderId" />
+      <PropertyRef Name="PublicStatus" />
+      <PropertyRef Name="PlanTitle" />
+      <PropertyRef Name="PlanStartDate" />
+      <PropertyRef Name="PlanEndDate" />
+      <PropertyRef Name="Plan_Fee_Adult" />
+      <PropertyRef Name="Plan_Fee_Child" />
+      <PropertyRef Name="Plan_Fee_Infant" />
+      <PropertyRef Name="HiddenFlg" />
+      <PropertyRef Name="ApplicationStatus" />
+      <PropertyRef Name="PaymentMethods" />
+      <PropertyRef Name="UserNo" />
+      <PropertyRef Name="UserName1" />
+      <PropertyRef Name="UserName2" />
+      <PropertyRef Name="UserRuby1" />
+      <PropertyRef Name="UserRuby2" />
+      <PropertyRef Name="ZipCode" />
+      <PropertyRef Name="UserAddress1" />
+      <PropertyRef Name="UserAddress2" />
+      <PropertyRef Name="BirthDate" />
+      <PropertyRef Name="Age" />
+      <PropertyRef Name="UserPhone1" />
+      <PropertyRef Name="UserMailAddress" />
+      <PropertyRef Name="Sex" />
+      <PropertyRef Name="AcceptDate" />
+      <PropertyRef Name="Num_Adult" />
+      <PropertyRef Name="Num_Child" />
+      <PropertyRef Name="Num_Infant" />
+      <PropertyRef Name="Fee_Adult" />
+      <PropertyRef Name="Fee_Child" />
+      <PropertyRef Name="Fee_Infant" />
+      <PropertyRef Name="Transportation" />
+      <PropertyRef Name="PointCardFlg" />
+      <PropertyRef Name="Amount" />
+    </Key>
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+    <Property Name="PlanId" Type="Int32" Nullable="false" />
+    <Property Name="ProviderId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PublicStatus" Type="Byte" Nullable="false" />
+    <Property Name="PlanTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PlanStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PlanEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PlanAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Access" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Overview" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Contents" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="Plan_Fee_Adult" Type="Int32" Nullable="false" />
+    <Property Name="Plan_Fee_Child" Type="Int32" Nullable="false" />
+    <Property Name="Plan_Fee_Infant" Type="Int32" Nullable="false" />
+    <Property Name="MeetingPlace" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="TimeRequired" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MaxApplicantsNum" Type="Int16" />
+    <Property Name="PlanCourse" Type="String" MaxLength="256" FixedLength="true" Unicode="true" />
+    <Property Name="HiddenFlg" Type="Boolean" Nullable="false" />
+    <Property Name="CancelPolicy" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="AllPersonFlg" Type="Boolean" />
+    <Property Name="ApplicationStatus" Type="Byte" Nullable="false" />
+    <Property Name="PaymentMethods" Type="Byte" Nullable="false" />
+    <Property Name="UserNo" Type="Int32" Nullable="false" />
+    <Property Name="UserName1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserRuby1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserRuby2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="UserAddress1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UserAddress2" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Age" Type="Byte" Nullable="false" />
+    <Property Name="UserPhone1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserPhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserMailAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Sex" Type="Byte" Nullable="false" />
+    <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Num_Adult" Type="Int16" Nullable="false" />
+    <Property Name="Num_Child" Type="Int16" Nullable="false" />
+    <Property Name="Num_Infant" Type="Int16" Nullable="false" />
+    <Property Name="Fee_Adult" Type="Int32" Nullable="false" />
+    <Property Name="Fee_Child" Type="Int32" Nullable="false" />
+    <Property Name="Fee_Infant" Type="Int32" Nullable="false" />
+    <Property Name="Transportation" Type="Byte" Nullable="false" />
+    <Property Name="CheckInTime" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="PointCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PointCardFlg" Type="Boolean" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplicationPayment">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+      <PropertyRef Name="PaymentSeq" />
+    </Key>
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentSeq" Type="Int32" Nullable="false" />
+    <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
+    <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ShopID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="JobCd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Tax" Type="Int32" Nullable="false" />
+    <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="AccessID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="AccessPass" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="OrderID" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+    <Property Name="TranID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TranDate" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+    <Property Name="CheckString" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ErrCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="ErrInfo" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="ClientField1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ClientField2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ClientField3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

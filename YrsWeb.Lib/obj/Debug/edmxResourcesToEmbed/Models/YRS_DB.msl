@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="YRS_DBModelStoreContainer" CdmEntityContainer="YRS_DBEntities">
+    <EntitySetMapping Name="Provider_M">
+      <EntityTypeMapping TypeName="YRS_DBModel.Provider_M">
+        <MappingFragment StoreEntitySet="Provider_M">
+          <ScalarProperty Name="PersonalinfoManagement" ColumnName="PersonalinfoManagement" />
+          <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+          <ScalarProperty Name="RegistMailCount" ColumnName="RegistMailCount" />
+          <ScalarProperty Name="ProRegistDate" ColumnName="ProRegistDate" />
+          <ScalarProperty Name="PreRegistDate" ColumnName="PreRegistDate" />
+          <ScalarProperty Name="TantoPhone" ColumnName="TantoPhone" />
+          <ScalarProperty Name="TantoMailAddress" ColumnName="TantoMailAddress" />
+          <ScalarProperty Name="TantoName" ColumnName="TantoName" />
+          <ScalarProperty Name="ProviderAddress" ColumnName="ProviderAddress" />
+          <ScalarProperty Name="ProviderIndustry" ColumnName="ProviderIndustry" />
+          <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+          <ScalarProperty Name="ProviderPassword" ColumnName="ProviderPassword" />
+          <ScalarProperty Name="RegistStatus" ColumnName="RegistStatus" />
+          <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PassResetRequest">
+      <EntityTypeMapping TypeName="YRS_DBModel.PassResetRequest">
+        <MappingFragment StoreEntitySet="PassResetRequest">
+          <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+          <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+          <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+          <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+          <ScalarProperty Name="ExpirationDateTime" ColumnName="ExpirationDateTime" />
+          <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+          <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanCategory">
+      <EntityTypeMapping TypeName="YRS_DBModel.PlanCategory">
+        <MappingFragment StoreEntitySet="PlanCategory">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanArea">
+      <EntityTypeMapping TypeName="YRS_DBModel.PlanArea">
+        <MappingFragment StoreEntitySet="PlanArea">
+          <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanImage">
+      <EntityTypeMapping TypeName="YRS_DBModel.PlanImage">
+        <MappingFragment StoreEntitySet="PlanImage">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+          <ScalarProperty Name="ImageLevel" ColumnName="ImageLevel" />
+          <ScalarProperty Name="ImageNo" ColumnName="ImageNo" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanDateStr">
+      <EntityTypeMapping TypeName="YRS_DBModel.PlanDateStr">
+        <MappingFragment StoreEntitySet="PlanDateStr">
+          <ScalarProperty Name="AcceptDateStr" ColumnName="AcceptDateStr" />
+          <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanInfo">
+      <EntityTypeMapping TypeName="YRS_DBModel.PlanInfo">
+        <MappingFragment StoreEntitySet="PlanInfo">
+          <ScalarProperty Name="AllPersonFlg" ColumnName="AllPersonFlg" />
+          <ScalarProperty Name="CancelPolicy" ColumnName="CancelPolicy" />
+          <ScalarProperty Name="HiddenFlg" ColumnName="HiddenFlg" />
+          <ScalarProperty Name="PlanCourse" ColumnName="PlanCourse" />
+          <ScalarProperty Name="MaxApplicantsNum" ColumnName="MaxApplicantsNum" />
+          <ScalarProperty Name="TimeRequired" ColumnName="TimeRequired" />
+          <ScalarProperty Name="MeetingPlace" ColumnName="MeetingPlace" />
+          <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+          <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+          <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+          <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Overview" ColumnName="Overview" />
+          <ScalarProperty Name="Access" ColumnName="Access" />
+          <ScalarProperty Name="PlanAddress" ColumnName="PlanAddress" />
+          <ScalarProperty Name="PublicEndDate" ColumnName="PublicEndDate" />
+          <ScalarProperty Name="PublicStartDate" ColumnName="PublicStartDate" />
+          <ScalarProperty Name="PlanEndDate" ColumnName="PlanEndDate" />
+          <ScalarProperty Name="PlanStartDate" ColumnName="PlanStartDate" />
+          <ScalarProperty Name="PlanTitle" ColumnName="PlanTitle" />
+          <ScalarProperty Name="PublicStatus" ColumnName="PublicStatus" />
+          <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PublicPlanInfo">
+      <EntityTypeMapping TypeName="YRS_DBModel.PublicPlanInfo">
+        <MappingFragment StoreEntitySet="PublicPlanInfo">
+          <ScalarProperty Name="AllPersonFlg" ColumnName="AllPersonFlg" />
+          <ScalarProperty Name="CancelPolicy" ColumnName="CancelPolicy" />
+          <ScalarProperty Name="HiddenFlg" ColumnName="HiddenFlg" />
+          <ScalarProperty Name="PlanCourse" ColumnName="PlanCourse" />
+          <ScalarProperty Name="MaxFee_Infant" ColumnName="MaxFee_Infant" />
+          <ScalarProperty Name="MinFee_Child" ColumnName="MinFee_Child" />
+          <ScalarProperty Name="MinFee_Infant" ColumnName="MinFee_Infant" />
+          <ScalarProperty Name="MaxFee_Child" ColumnName="MaxFee_Child" />
+          <ScalarProperty Name="MinFee_Adult" ColumnName="MinFee_Adult" />
+          <ScalarProperty Name="MaxFee_Adult" ColumnName="MaxFee_Adult" />
+          <ScalarProperty Name="MaxAcceptDate" ColumnName="MaxAcceptDate" />
+          <ScalarProperty Name="MinAcceptDate" ColumnName="MinAcceptDate" />
+          <ScalarProperty Name="MaxApplicantsNum" ColumnName="MaxApplicantsNum" />
+          <ScalarProperty Name="TimeRequired" ColumnName="TimeRequired" />
+          <ScalarProperty Name="MeetingPlace" ColumnName="MeetingPlace" />
+          <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+          <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+          <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+          <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Overview" ColumnName="Overview" />
+          <ScalarProperty Name="Access" ColumnName="Access" />
+          <ScalarProperty Name="PlanAddress" ColumnName="PlanAddress" />
+          <ScalarProperty Name="PublicEndDate" ColumnName="PublicEndDate" />
+          <ScalarProperty Name="PublicStartDate" ColumnName="PublicStartDate" />
+          <ScalarProperty Name="PlanEndDate" ColumnName="PlanEndDate" />
+          <ScalarProperty Name="PlanStartDate" ColumnName="PlanStartDate" />
+          <ScalarProperty Name="PlanTitle" ColumnName="PlanTitle" />
+          <ScalarProperty Name="PublicStatus" ColumnName="PublicStatus" />
+          <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+          <ScalarProperty Name="TantoPhone" ColumnName="TantoPhone" />
+          <ScalarProperty Name="TantoMailAddress" ColumnName="TantoMailAddress" />
+          <ScalarProperty Name="TantoName" ColumnName="TantoName" />
+          <ScalarProperty Name="ProviderAddress" ColumnName="ProviderAddress" />
+          <ScalarProperty Name="ProviderIndustry" ColumnName="ProviderIndustry" />
+          <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanDate">
+      <EntityTypeMapping TypeName="YRS_DBModel.PlanDate">
+        <MappingFragment StoreEntitySet="PlanDate">
+          <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+          <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+          <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+          <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category_M">
+      <EntityTypeMapping TypeName="YRS_DBModel.Category_M">
+        <MappingFragment StoreEntitySet="Category_M">
+          <ScalarProperty Name="CategoryLevel" ColumnName="CategoryLevel" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manager_M">
+      <EntityTypeMapping TypeName="YRS_DBModel.Manager_M">
+        <MappingFragment StoreEntitySet="Manager_M">
+          <ScalarProperty Name="SMTP_Password" ColumnName="SMTP_Password" />
+          <ScalarProperty Name="SMTP_User" ColumnName="SMTP_User" />
+          <ScalarProperty Name="SMTP_Port" ColumnName="SMTP_Port" />
+          <ScalarProperty Name="SMTP_ServerAddress" ColumnName="SMTP_ServerAddress" />
+          <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+          <ScalarProperty Name="ManagerPassword" ColumnName="ManagerPassword" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationInfo">
+      <EntityTypeMapping TypeName="YRS_DBModel.ApplicationInfo">
+        <MappingFragment StoreEntitySet="ApplicationInfo">
+          <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="PointCardFlg" ColumnName="PointCardFlg" />
+          <ScalarProperty Name="PointCardNo" ColumnName="PointCardNo" />
+          <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+          <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+          <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+          <ScalarProperty Name="Num_Infant" ColumnName="Num_Infant" />
+          <ScalarProperty Name="Num_Child" ColumnName="Num_Child" />
+          <ScalarProperty Name="Num_Adult" ColumnName="Num_Adult" />
+          <ScalarProperty Name="Num_Stays" ColumnName="Num_Stays" />
+          <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserMailAddress" ColumnName="UserMailAddress" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
+          <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationPayment">
+      <EntityTypeMapping TypeName="YRS_DBModel.ApplicationPayment">
+        <MappingFragment StoreEntitySet="ApplicationPayment">
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentSeq" ColumnName="PaymentSeq" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationHeader">
+      <EntityTypeMapping TypeName="YRS_DBModel.ApplicationHeader">
+        <MappingFragment StoreEntitySet="ApplicationHeader">
+          <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="PointCardFlg" ColumnName="PointCardFlg" />
+          <ScalarProperty Name="PointCardNo" ColumnName="PointCardNo" />
+          <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+          <ScalarProperty Name="Transportation" ColumnName="Transportation" />
+          <ScalarProperty Name="Num_Infant" ColumnName="Num_Infant" />
+          <ScalarProperty Name="Num_Child" ColumnName="Num_Child" />
+          <ScalarProperty Name="Num_Adult" ColumnName="Num_Adult" />
+          <ScalarProperty Name="PaymentMethods" ColumnName="PaymentMethods" />
+          <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationPlan">
+      <EntityTypeMapping TypeName="YRS_DBModel.ApplicationPlan">
+        <MappingFragment StoreEntitySet="ApplicationPlan">
+          <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+          <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+          <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+          <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationUser">
+      <EntityTypeMapping TypeName="YRS_DBModel.ApplicationUser">
+        <MappingFragment StoreEntitySet="ApplicationUser">
+          <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="UserMailAddress" ColumnName="UserMailAddress" />
+          <ScalarProperty Name="UserPhone2" ColumnName="UserPhone2" />
+          <ScalarProperty Name="UserPhone1" ColumnName="UserPhone1" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="UserAddress3" ColumnName="UserAddress3" />
+          <ScalarProperty Name="UserAddress2" ColumnName="UserAddress2" />
+          <ScalarProperty Name="UserAddress1" ColumnName="UserAddress1" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="UserRuby2" ColumnName="UserRuby2" />
+          <ScalarProperty Name="UserRuby1" ColumnName="UserRuby1" />
+          <ScalarProperty Name="UserName2" ColumnName="UserName2" />
+          <ScalarProperty Name="UserName1" ColumnName="UserName1" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanAppInfo">
+      <EntityTypeMapping TypeName="YRS_DBModel.PlanAppInfo">
+        <MappingFragment StoreEntitySet="PlanAppInfo">
+          <ScalarProperty Name="PointCardFlg" ColumnName="PointCardFlg" />
+          <ScalarProperty Name="PointCardNo" ColumnName="PointCardNo" />
+          <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+          <ScalarProperty Name="Transportation" ColumnName="Transportation" />
+          <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+          <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+          <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+          <ScalarProperty Name="Num_Infant" ColumnName="Num_Infant" />
+          <ScalarProperty Name="Num_Child" ColumnName="Num_Child" />
+          <ScalarProperty Name="Num_Adult" ColumnName="Num_Adult" />
+          <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="UserMailAddress" ColumnName="UserMailAddress" />
+          <ScalarProperty Name="UserPhone2" ColumnName="UserPhone2" />
+          <ScalarProperty Name="UserPhone1" ColumnName="UserPhone1" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="UserAddress3" ColumnName="UserAddress3" />
+          <ScalarProperty Name="UserAddress2" ColumnName="UserAddress2" />
+          <ScalarProperty Name="UserAddress1" ColumnName="UserAddress1" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="UserRuby2" ColumnName="UserRuby2" />
+          <ScalarProperty Name="UserRuby1" ColumnName="UserRuby1" />
+          <ScalarProperty Name="UserName2" ColumnName="UserName2" />
+          <ScalarProperty Name="UserName1" ColumnName="UserName1" />
+          <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+          <ScalarProperty Name="PaymentMethods" ColumnName="PaymentMethods" />
+          <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
+          <ScalarProperty Name="AllPersonFlg" ColumnName="AllPersonFlg" />
+          <ScalarProperty Name="CancelPolicy" ColumnName="CancelPolicy" />
+          <ScalarProperty Name="HiddenFlg" ColumnName="HiddenFlg" />
+          <ScalarProperty Name="PlanCourse" ColumnName="PlanCourse" />
+          <ScalarProperty Name="MaxApplicantsNum" ColumnName="MaxApplicantsNum" />
+          <ScalarProperty Name="TimeRequired" ColumnName="TimeRequired" />
+          <ScalarProperty Name="MeetingPlace" ColumnName="MeetingPlace" />
+          <ScalarProperty Name="Plan_Fee_Infant" ColumnName="Plan_Fee_Infant" />
+          <ScalarProperty Name="Plan_Fee_Child" ColumnName="Plan_Fee_Child" />
+          <ScalarProperty Name="Plan_Fee_Adult" ColumnName="Plan_Fee_Adult" />
+          <ScalarProperty Name="Contents" ColumnName="Contents" />
+          <ScalarProperty Name="Overview" ColumnName="Overview" />
+          <ScalarProperty Name="Access" ColumnName="Access" />
+          <ScalarProperty Name="PlanAddress" ColumnName="PlanAddress" />
+          <ScalarProperty Name="PlanEndDate" ColumnName="PlanEndDate" />
+          <ScalarProperty Name="PlanStartDate" ColumnName="PlanStartDate" />
+          <ScalarProperty Name="PlanTitle" ColumnName="PlanTitle" />
+          <ScalarProperty Name="PublicStatus" ColumnName="PublicStatus" />
+          <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+          <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

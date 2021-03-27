@@ -1,0 +1,13 @@
+{
+    "folders": [
+        {
+            "path": ".\\FrontEnd"
+        },
+        {
+            "path": "docs"
+        }
+    ],
+    "settings": {
+        "git.ignoreLimitWarning": true
+    }
+}

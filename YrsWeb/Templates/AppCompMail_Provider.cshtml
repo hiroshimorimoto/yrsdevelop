@@ -1,0 +1,117 @@
+﻿@model YrsWeb.Lib.Dto.AppEditModel
+@using RazorEngine.Templating;
+@using YrsWeb.Lib.Dto;
+@using YrsWeb.Lib.Models;
+@using YrsWeb.Lib.Common;
+@using YrsWeb;
+@{
+PublicPlanInfo mainPlan = Model.PlanModelList[0].PlanInfo;
+}
+@(mainPlan.ProviderName) 様
+
+以下の通り、掲載中ツアーへのお申込がありました。
+内容をご確認いただき、近日中にお申込者様へのご連絡をお願い致します。
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+お申込情報
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+■ご注文番号
+@Model.ApplicationHeader.OrderNo
+
+■ご注文日
+@Model.ApplicationHeader.InsertDateStr
+
+■お申込人数
+@(Model.ApplicationHeader.SumNum)人（大人：@(Model.ApplicationHeader.Num_Adult)人、子供：@(Model.ApplicationHeader.Num_Child)人、幼児：@(Model.ApplicationHeader.Num_Child)人）
+
+■集合場所（又は宿）までの交通手段
+@Model.ApplicationHeader.TransportationTitle
+
+@if (!String.IsNullOrEmpty(Model.ApplicationHeader.CheckInTime))
+{
+<text>
+■チェックイン時間
+@Model.ApplicationHeader.CheckInTime
+</text>
+}
+
+■お申込ツアー
+@for (int i = 0; i < Model.ApplicationPlans.Count; i++)
+{
+ApplicationPlan appPlan = Model.ApplicationPlans[i];
+PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
+<text>
+@planModel.PlanInfo.PlanTitle
+ツアー催行日：@appPlan.AcceptDate
+ツアー詳細情報：@planModel.PlanInfo.PlanPageUrl
+</text>
+}
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+お支払い情報
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+@for (int i = 0; i < Model.ApplicationPlans.Count; i++)
+{
+
+ApplicationHeader header = Model.ApplicationHeader;
+ApplicationPlan appPlan = Model.ApplicationPlans[i];
+
+PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
+
+<text>
+@planModel.PlanInfo.PlanTitle（@appPlan.AcceptDate）
+大人料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Adult))円 ×　@(header.Num_Adult)名
+子供料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Child))円 ×　@(header.Num_Child)名
+幼児料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Infant))円 ×　@(header.Num_Infant)名
+</text>
+}
+------------------------------
+合計 ：　@(Statics.GetCommaNum(Model.GetSumFee()))円
+
+■お支払い方法
+@(Model.ApplicationHeader.PaymentMethodTitle)
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+お申込者様情報（代表者様情報）
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+@{
+ApplicationUser mainUser = Model.ApplicationUsers[0];
+}
+■お名前
+@mainUser.UserName_Full（@mainUser.UserRuby_Full）
+■ご住所
+〒@mainUser.ZipCode
+@mainUser.UserAddress_Full
+■生年月日
+@mainUser.BirthDateStr（@(mainUser.Age)歳）
+■お電話番号
+@mainUser.UserPhone1
+■緊急連絡先
+@mainUser.UserPhone2
+■メールアドレス
+@mainUser.UserMailAddress
+@for (int i = 1; i < Model.ApplicationUsers.Count; i++)
+{
+ApplicationUser subUser = Model.ApplicationUsers[i];
+<text>
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+■お名前
+@subUser.UserName_Full（@subUser.UserRuby_Full）
+■ご住所
+〒@subUser.ZipCode
+@subUser.UserAddress_Full
+■生年月日
+@subUser.BirthDateStr（@(subUser.Age)歳）
+■お電話番号
+@subUser.UserPhone1
+</text>
+}
+-------------------------------------------------------------
+一般社団法人吉野ビジターズビューロー
+よしのリザーブ 問合せ窓口
+〒639-3111 奈良県吉野郡吉野町上市77-1
+【Mail】info@yoshino-reserve.com
+【Tel】0746-34-2522
+【Fax】0746-39-9238
+【受付時間】9:00～17:00(土日祝日、年末年始を除く)
+-------------------------------------------------------------

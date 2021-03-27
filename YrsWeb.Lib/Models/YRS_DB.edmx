@@ -1,0 +1,1222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="YRS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApplicationHeader">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationStatus" Type="tinyint" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="27" Nullable="false" />
+          <Property Name="PaymentMethods" Type="tinyint" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Num_Adult" Type="smallint" Nullable="false" />
+          <Property Name="Num_Child" Type="smallint" Nullable="false" />
+          <Property Name="Num_Infant" Type="smallint" Nullable="false" />
+          <Property Name="Transportation" Type="tinyint" Nullable="false" />
+          <Property Name="CheckInTime" Type="varchar" MaxLength="5" />
+          <Property Name="PointCardNo" Type="varchar" MaxLength="50" />
+          <Property Name="PointCardFlg" Type="bit" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationPayment">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="PaymentSeq" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="PaymentSeq" Type="int" Nullable="false" />
+          <Property Name="PaymentStatus" Type="tinyint" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="ShopID" Type="varchar" MaxLength="13" />
+          <Property Name="JobCd" Type="varchar" MaxLength="30" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Tax" Type="int" Nullable="false" />
+          <Property Name="Currency" Type="varchar" MaxLength="3" />
+          <Property Name="AccessID" Type="varchar" MaxLength="32" />
+          <Property Name="AccessPass" Type="varchar" MaxLength="32" />
+          <Property Name="OrderID" Type="varchar" MaxLength="27" />
+          <Property Name="TranID" Type="varchar" MaxLength="32" />
+          <Property Name="TranDate" Type="varchar" MaxLength="19" />
+          <Property Name="CheckString" Type="varchar" MaxLength="32" />
+          <Property Name="ErrCode" Type="varchar" MaxLength="3" />
+          <Property Name="ErrInfo" Type="varchar" MaxLength="9" />
+          <Property Name="ClientField1" Type="varchar" MaxLength="100" />
+          <Property Name="ClientField2" Type="varchar" MaxLength="100" />
+          <Property Name="ClientField3" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ApplicationPlan">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="AcceptDate" Type="date" Nullable="false" />
+          <Property Name="Fee_Adult" Type="int" Nullable="false" />
+          <Property Name="Fee_Child" Type="int" Nullable="false" />
+          <Property Name="Fee_Infant" Type="int" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="UserNo" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="UserNo" Type="int" Nullable="false" />
+          <Property Name="UserName1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRuby1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRuby2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="UserAddress1" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserAddress2" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserAddress3" Type="nvarchar" MaxLength="100" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Age" Type="tinyint" Nullable="false" />
+          <Property Name="UserPhone1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserPhone2" Type="varchar" MaxLength="20" />
+          <Property Name="UserMailAddress" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Sex" Type="tinyint" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category_M">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryLevel" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager_M">
+          <Key>
+            <PropertyRef Name="ManagerId" />
+          </Key>
+          <Property Name="ManagerId" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="ManagerPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MailAddress" Type="nvarchar" MaxLength="256" />
+          <Property Name="SMTP_ServerAddress" Type="varchar" MaxLength="256" />
+          <Property Name="SMTP_Port" Type="varchar" MaxLength="10" />
+          <Property Name="SMTP_User" Type="varchar" MaxLength="256" />
+          <Property Name="SMTP_Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PassResetRequest">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestDateTime" Type="datetime" Nullable="false" />
+          <Property Name="ExpirationDateTime" Type="datetime" Nullable="false" />
+          <Property Name="RequestType" Type="tinyint" Nullable="false" />
+          <Property Name="RequestStatus" Type="tinyint" Nullable="false" />
+          <Property Name="MailAddress" Type="varchar" MaxLength="256" />
+          <Property Name="AuthCode" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="PlanArea">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="AreaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanCategory">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanDate">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="AcceptDate" />
+          </Key>
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="AcceptDate" Type="date" Nullable="false" />
+          <Property Name="Fee_Adult" Type="int" />
+          <Property Name="Fee_Child" Type="int" />
+          <Property Name="Fee_Infant" Type="int" />
+        </EntityType>
+        <EntityType Name="PlanImage">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="ImageNo" />
+          </Key>
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="ImageNo" Type="tinyint" Nullable="false" />
+          <Property Name="ImageLevel" Type="tinyint" Nullable="false" />
+          <Property Name="SortOrder" Type="tinyint" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="PlanInfo">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderId" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="PublicStatus" Type="tinyint" Nullable="false" />
+          <Property Name="PlanTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PlanStartDate" Type="date" Nullable="false" />
+          <Property Name="PlanEndDate" Type="date" Nullable="false" />
+          <Property Name="PublicStartDate" Type="date" />
+          <Property Name="PublicEndDate" Type="date" />
+          <Property Name="PlanAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Access" Type="nvarchar" MaxLength="200" />
+          <Property Name="Overview" Type="nvarchar" MaxLength="200" />
+          <Property Name="Contents" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Fee_Adult" Type="int" Nullable="false" />
+          <Property Name="Fee_Child" Type="int" Nullable="false" />
+          <Property Name="Fee_Infant" Type="int" Nullable="false" />
+          <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+          <Property Name="MeetingPlace" Type="nvarchar" MaxLength="256" />
+          <Property Name="TimeRequired" Type="nvarchar" MaxLength="256" />
+          <Property Name="MaxApplicantsNum" Type="smallint" />
+          <Property Name="PlanCourse" Type="nchar" MaxLength="256" />
+          <Property Name="HiddenFlg" Type="bit" Nullable="false" />
+          <Property Name="CancelPolicy" Type="nvarchar" MaxLength="1024" />
+          <Property Name="AllPersonFlg" Type="bit" />
+        </EntityType>
+        <EntityType Name="Provider_M">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="RegistStatus" Type="tinyint" Nullable="false" />
+          <Property Name="ProviderPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProviderIndustry" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProviderAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="TantoName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TantoMailAddress" Type="varchar" MaxLength="256" />
+          <Property Name="TantoPhone" Type="varchar" MaxLength="20" />
+          <Property Name="PreRegistDate" Type="datetime" />
+          <Property Name="ProRegistDate" Type="datetime" />
+          <Property Name="RegistMailCount" Type="tinyint" Nullable="false" />
+          <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+          <Property Name="PersonalinfoManagement" Type="varchar" MaxLength="5000" />
+        </EntityType>
+        <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'YRS_DB.dbo.PlanAppInfo' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+        <EntityType Name="PlanAppInfo">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="ProviderId" />
+            <PropertyRef Name="PublicStatus" />
+            <PropertyRef Name="PlanTitle" />
+            <PropertyRef Name="PlanStartDate" />
+            <PropertyRef Name="PlanEndDate" />
+            <PropertyRef Name="Plan_Fee_Adult" />
+            <PropertyRef Name="Plan_Fee_Child" />
+            <PropertyRef Name="Plan_Fee_Infant" />
+            <PropertyRef Name="HiddenFlg" />
+            <PropertyRef Name="ApplicationStatus" />
+            <PropertyRef Name="PaymentMethods" />
+            <PropertyRef Name="UserNo" />
+            <PropertyRef Name="UserName1" />
+            <PropertyRef Name="UserName2" />
+            <PropertyRef Name="UserRuby1" />
+            <PropertyRef Name="UserRuby2" />
+            <PropertyRef Name="ZipCode" />
+            <PropertyRef Name="UserAddress1" />
+            <PropertyRef Name="UserAddress2" />
+            <PropertyRef Name="BirthDate" />
+            <PropertyRef Name="Age" />
+            <PropertyRef Name="UserPhone1" />
+            <PropertyRef Name="UserMailAddress" />
+            <PropertyRef Name="Sex" />
+            <PropertyRef Name="AcceptDate" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Num_Adult" />
+            <PropertyRef Name="Num_Child" />
+            <PropertyRef Name="Num_Infant" />
+            <PropertyRef Name="Fee_Adult" />
+            <PropertyRef Name="Fee_Child" />
+            <PropertyRef Name="Fee_Infant" />
+            <PropertyRef Name="Transportation" />
+            <PropertyRef Name="PointCardFlg" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="PublicStatus" Type="tinyint" Nullable="false" />
+          <Property Name="PlanTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PlanStartDate" Type="date" Nullable="false" />
+          <Property Name="PlanEndDate" Type="date" Nullable="false" />
+          <Property Name="PlanAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Access" Type="nvarchar" MaxLength="200" />
+          <Property Name="Overview" Type="nvarchar" MaxLength="200" />
+          <Property Name="Contents" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Plan_Fee_Adult" Type="int" Nullable="false" />
+          <Property Name="Plan_Fee_Child" Type="int" Nullable="false" />
+          <Property Name="Plan_Fee_Infant" Type="int" Nullable="false" />
+          <Property Name="MeetingPlace" Type="nvarchar" MaxLength="256" />
+          <Property Name="TimeRequired" Type="nvarchar" MaxLength="256" />
+          <Property Name="MaxApplicantsNum" Type="smallint" />
+          <Property Name="PlanCourse" Type="nchar" MaxLength="256" />
+          <Property Name="HiddenFlg" Type="bit" Nullable="false" />
+          <Property Name="CancelPolicy" Type="nvarchar" MaxLength="1024" />
+          <Property Name="AllPersonFlg" Type="bit" />
+          <Property Name="ApplicationStatus" Type="tinyint" Nullable="false" />
+          <Property Name="PaymentMethods" Type="tinyint" Nullable="false" />
+          <Property Name="UserNo" Type="int" Nullable="false" />
+          <Property Name="UserName1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRuby1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserRuby2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="UserAddress1" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserAddress2" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserAddress3" Type="nvarchar" MaxLength="100" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Age" Type="tinyint" Nullable="false" />
+          <Property Name="UserPhone1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserPhone2" Type="varchar" MaxLength="20" />
+          <Property Name="UserMailAddress" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Sex" Type="tinyint" Nullable="false" />
+          <Property Name="AcceptDate" Type="date" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+          <Property Name="Num_Adult" Type="smallint" Nullable="false" />
+          <Property Name="Num_Child" Type="smallint" Nullable="false" />
+          <Property Name="Num_Infant" Type="smallint" Nullable="false" />
+          <Property Name="Fee_Adult" Type="int" Nullable="false" />
+          <Property Name="Fee_Child" Type="int" Nullable="false" />
+          <Property Name="Fee_Infant" Type="int" Nullable="false" />
+          <Property Name="Transportation" Type="tinyint" Nullable="false" />
+          <Property Name="CheckInTime" Type="varchar" MaxLength="5" />
+          <Property Name="PointCardNo" Type="varchar" MaxLength="50" />
+          <Property Name="PointCardFlg" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'YRS_DB.dbo.PlanDateStr' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+        <EntityType Name="PlanDateStr">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="AcceptDate" />
+          </Key>
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="AcceptDate" Type="date" Nullable="false" />
+          <Property Name="AcceptDateStr" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'YRS_DB.dbo.PublicPlanInfo' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+        <EntityType Name="PublicPlanInfo">
+          <Key>
+            <PropertyRef Name="ProviderName" />
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="ProviderId" />
+            <PropertyRef Name="PublicStatus" />
+            <PropertyRef Name="PlanTitle" />
+            <PropertyRef Name="PlanStartDate" />
+            <PropertyRef Name="PlanEndDate" />
+            <PropertyRef Name="Fee_Adult" />
+            <PropertyRef Name="Fee_Child" />
+            <PropertyRef Name="Fee_Infant" />
+            <PropertyRef Name="DeleteFlg" />
+            
+            
+            
+            
+            
+            
+            <PropertyRef Name="HiddenFlg" />
+          </Key>
+          <Property Name="ProviderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProviderIndustry" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProviderAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="TantoName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TantoMailAddress" Type="varchar" MaxLength="256" />
+          <Property Name="TantoPhone" Type="varchar" MaxLength="20" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="ProviderId" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="PublicStatus" Type="tinyint" Nullable="false" />
+          <Property Name="PlanTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PlanStartDate" Type="date" Nullable="false" />
+          <Property Name="PlanEndDate" Type="date" Nullable="false" />
+          <Property Name="PublicStartDate" Type="date" />
+          <Property Name="PublicEndDate" Type="date" />
+          <Property Name="PlanAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Access" Type="nvarchar" MaxLength="200" />
+          <Property Name="Overview" Type="nvarchar" MaxLength="200" />
+          <Property Name="Contents" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Fee_Adult" Type="int" Nullable="false" />
+          <Property Name="Fee_Child" Type="int" Nullable="false" />
+          <Property Name="Fee_Infant" Type="int" Nullable="false" />
+          <Property Name="DeleteFlg" Type="bit" Nullable="false" />
+          <Property Name="MeetingPlace" Type="nvarchar" MaxLength="256" />
+          <Property Name="TimeRequired" Type="nvarchar" MaxLength="256" />
+          <Property Name="MaxApplicantsNum" Type="smallint" />
+          <Property Name="MinAcceptDate" Type="date" />
+          <Property Name="MaxAcceptDate" Type="date" />
+          <Property Name="MaxFee_Adult" Type="int" Nullable="false" />
+          <Property Name="MinFee_Adult" Type="int" Nullable="false" />
+          <Property Name="MaxFee_Child" Type="int" Nullable="false" />
+          <Property Name="MinFee_Infant" Type="int" Nullable="false" />
+          <Property Name="MinFee_Child" Type="int" Nullable="false" />
+          <Property Name="MaxFee_Infant" Type="int" Nullable="false" />
+          <Property Name="PlanCourse" Type="nchar" MaxLength="256" />
+          <Property Name="HiddenFlg" Type="bit" Nullable="false" />
+          <Property Name="CancelPolicy" Type="nvarchar" MaxLength="1024" />
+          <Property Name="AllPersonFlg" Type="bit" />
+          <Property Name="TopImageNo" Type="tinyint" />
+        </EntityType>
+        <EntityContainer Name="YRS_DBModelStoreContainer">
+          <EntitySet Name="ApplicationHeader" EntityType="Self.ApplicationHeader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationPayment" EntityType="Self.ApplicationPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationPlan" EntityType="Self.ApplicationPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUser" EntityType="Self.ApplicationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category_M" EntityType="Self.Category_M" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager_M" EntityType="Self.Manager_M" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PassResetRequest" EntityType="Self.PassResetRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanArea" EntityType="Self.PlanArea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanCategory" EntityType="Self.PlanCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanDate" EntityType="Self.PlanDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanImage" EntityType="Self.PlanImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanInfo" EntityType="Self.PlanInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provider_M" EntityType="Self.Provider_M" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanAppInfo" EntityType="Self.PlanAppInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PlanAppInfo].[ApplicationId] AS [ApplicationId], 
+    [PlanAppInfo].[PlanId] AS [PlanId], 
+    [PlanAppInfo].[ProviderId] AS [ProviderId], 
+    [PlanAppInfo].[PublicStatus] AS [PublicStatus], 
+    [PlanAppInfo].[PlanTitle] AS [PlanTitle], 
+    [PlanAppInfo].[PlanStartDate] AS [PlanStartDate], 
+    [PlanAppInfo].[PlanEndDate] AS [PlanEndDate], 
+    [PlanAppInfo].[PlanAddress] AS [PlanAddress], 
+    [PlanAppInfo].[Access] AS [Access], 
+    [PlanAppInfo].[Overview] AS [Overview], 
+    [PlanAppInfo].[Contents] AS [Contents], 
+    [PlanAppInfo].[Plan_Fee_Adult] AS [Plan_Fee_Adult], 
+    [PlanAppInfo].[Plan_Fee_Child] AS [Plan_Fee_Child], 
+    [PlanAppInfo].[Plan_Fee_Infant] AS [Plan_Fee_Infant], 
+    [PlanAppInfo].[MeetingPlace] AS [MeetingPlace], 
+    [PlanAppInfo].[TimeRequired] AS [TimeRequired], 
+    [PlanAppInfo].[MaxApplicantsNum] AS [MaxApplicantsNum], 
+    [PlanAppInfo].[PlanCourse] AS [PlanCourse], 
+    [PlanAppInfo].[HiddenFlg] AS [HiddenFlg], 
+    [PlanAppInfo].[CancelPolicy] AS [CancelPolicy], 
+    [PlanAppInfo].[AllPersonFlg] AS [AllPersonFlg], 
+    [PlanAppInfo].[ApplicationStatus] AS [ApplicationStatus], 
+    [PlanAppInfo].[PaymentMethods] AS [PaymentMethods], 
+    [PlanAppInfo].[UserNo] AS [UserNo], 
+    [PlanAppInfo].[UserName1] AS [UserName1], 
+    [PlanAppInfo].[UserName2] AS [UserName2], 
+    [PlanAppInfo].[UserRuby1] AS [UserRuby1], 
+    [PlanAppInfo].[UserRuby2] AS [UserRuby2], 
+    [PlanAppInfo].[ZipCode] AS [ZipCode], 
+    [PlanAppInfo].[UserAddress1] AS [UserAddress1], 
+    [PlanAppInfo].[UserAddress2] AS [UserAddress2], 
+    [PlanAppInfo].[UserAddress3] AS [UserAddress3], 
+    [PlanAppInfo].[BirthDate] AS [BirthDate], 
+    [PlanAppInfo].[Age] AS [Age], 
+    [PlanAppInfo].[UserPhone1] AS [UserPhone1], 
+    [PlanAppInfo].[UserPhone2] AS [UserPhone2], 
+    [PlanAppInfo].[UserMailAddress] AS [UserMailAddress], 
+    [PlanAppInfo].[Sex] AS [Sex], 
+    [PlanAppInfo].[AcceptDate] AS [AcceptDate], 
+    [PlanAppInfo].[Amount] AS [Amount], 
+    [PlanAppInfo].[Num_Adult] AS [Num_Adult], 
+    [PlanAppInfo].[Num_Child] AS [Num_Child], 
+    [PlanAppInfo].[Num_Infant] AS [Num_Infant], 
+    [PlanAppInfo].[Fee_Adult] AS [Fee_Adult], 
+    [PlanAppInfo].[Fee_Child] AS [Fee_Child], 
+    [PlanAppInfo].[Fee_Infant] AS [Fee_Infant], 
+    [PlanAppInfo].[Transportation] AS [Transportation], 
+    [PlanAppInfo].[CheckInTime] AS [CheckInTime], 
+    [PlanAppInfo].[PointCardNo] AS [PointCardNo], 
+    [PlanAppInfo].[PointCardFlg] AS [PointCardFlg]
+    FROM [dbo].[PlanAppInfo] AS [PlanAppInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PlanDateStr" EntityType="Self.PlanDateStr" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PlanDateStr].[PlanId] AS [PlanId], 
+    [PlanDateStr].[AcceptDate] AS [AcceptDate], 
+    [PlanDateStr].[AcceptDateStr] AS [AcceptDateStr]
+    FROM [dbo].[PlanDateStr] AS [PlanDateStr]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PublicPlanInfo" EntityType="Self.PublicPlanInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PublicPlanInfo].[ProviderName] AS [ProviderName], 
+    [PublicPlanInfo].[ProviderIndustry] AS [ProviderIndustry], 
+    [PublicPlanInfo].[ProviderAddress] AS [ProviderAddress], 
+    [PublicPlanInfo].[TantoName] AS [TantoName], 
+    [PublicPlanInfo].[TantoMailAddress] AS [TantoMailAddress], 
+    [PublicPlanInfo].[TantoPhone] AS [TantoPhone], 
+    [PublicPlanInfo].[PlanId] AS [PlanId], 
+    [PublicPlanInfo].[ProviderId] AS [ProviderId], 
+    [PublicPlanInfo].[PublicStatus] AS [PublicStatus], 
+    [PublicPlanInfo].[PlanTitle] AS [PlanTitle], 
+    [PublicPlanInfo].[PlanStartDate] AS [PlanStartDate], 
+    [PublicPlanInfo].[PlanEndDate] AS [PlanEndDate], 
+    [PublicPlanInfo].[PublicStartDate] AS [PublicStartDate], 
+    [PublicPlanInfo].[PublicEndDate] AS [PublicEndDate], 
+    [PublicPlanInfo].[PlanAddress] AS [PlanAddress], 
+    [PublicPlanInfo].[Access] AS [Access], 
+    [PublicPlanInfo].[Overview] AS [Overview], 
+    [PublicPlanInfo].[Contents] AS [Contents], 
+    [PublicPlanInfo].[Fee_Adult] AS [Fee_Adult], 
+    [PublicPlanInfo].[Fee_Child] AS [Fee_Child], 
+    [PublicPlanInfo].[Fee_Infant] AS [Fee_Infant], 
+    [PublicPlanInfo].[DeleteFlg] AS [DeleteFlg], 
+    [PublicPlanInfo].[MeetingPlace] AS [MeetingPlace], 
+    [PublicPlanInfo].[TimeRequired] AS [TimeRequired], 
+    [PublicPlanInfo].[MaxApplicantsNum] AS [MaxApplicantsNum], 
+    [PublicPlanInfo].[MinAcceptDate] AS [MinAcceptDate], 
+    [PublicPlanInfo].[MaxAcceptDate] AS [MaxAcceptDate], 
+    [PublicPlanInfo].[MaxFee_Adult] AS [MaxFee_Adult], 
+    [PublicPlanInfo].[MinFee_Adult] AS [MinFee_Adult], 
+    [PublicPlanInfo].[MaxFee_Child] AS [MaxFee_Child], 
+    [PublicPlanInfo].[MinFee_Infant] AS [MinFee_Infant], 
+    [PublicPlanInfo].[MinFee_Child] AS [MinFee_Child], 
+    [PublicPlanInfo].[MaxFee_Infant] AS [MaxFee_Infant], 
+    [PublicPlanInfo].[PlanCourse] AS [PlanCourse], 
+    [PublicPlanInfo].[HiddenFlg] AS [HiddenFlg], 
+    [PublicPlanInfo].[CancelPolicy] AS [CancelPolicy], 
+    [PublicPlanInfo].[AllPersonFlg] AS [AllPersonFlg], 
+    [PublicPlanInfo].[TopImageNo] AS [TopImageNo]
+    FROM [dbo].[PublicPlanInfo] AS [PublicPlanInfo]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YRS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="YRS_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Provider_M" EntityType="YRS_DBModel.Provider_M" />
+          <EntitySet Name="PassResetRequest" EntityType="YRS_DBModel.PassResetRequest" />
+          <EntitySet Name="PlanCategory" EntityType="YRS_DBModel.PlanCategory" />
+          <EntitySet Name="PlanArea" EntityType="YRS_DBModel.PlanArea" />
+          <EntitySet Name="PlanImage" EntityType="YRS_DBModel.PlanImage" />
+          <EntitySet Name="PlanDateStr" EntityType="YRS_DBModel.PlanDateStr" />
+          <EntitySet Name="PlanInfo" EntityType="YRS_DBModel.PlanInfo" />
+          <EntitySet Name="PublicPlanInfo" EntityType="YRS_DBModel.PublicPlanInfo" />
+          <EntitySet Name="PlanDate" EntityType="YRS_DBModel.PlanDate" />
+          <EntitySet Name="Category_M" EntityType="YRS_DBModel.Category_M" />
+          <EntitySet Name="Manager_M" EntityType="YRS_DBModel.Manager_M" />
+          <EntitySet Name="ApplicationHeader" EntityType="YRS_DBModel.ApplicationHeader" />
+          <EntitySet Name="ApplicationPlan" EntityType="YRS_DBModel.ApplicationPlan" />
+          <EntitySet Name="ApplicationUser" EntityType="YRS_DBModel.ApplicationUser" />
+          <EntitySet Name="PlanAppInfo" EntityType="YRS_DBModel.PlanAppInfo" />
+          <EntitySet Name="ApplicationPayment" EntityType="YRS_DBModel.ApplicationPayment" />
+        </EntityContainer>
+        <EntityType Name="Provider_M">
+          <Key>
+            <PropertyRef Name="ProviderId" />
+          </Key>
+          <Property Name="ProviderId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="RegistStatus" Type="Byte" Nullable="false" />
+          <Property Name="ProviderPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderIndustry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TantoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TantoMailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="TantoPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PreRegistDate" Type="DateTime" Precision="3" />
+          <Property Name="ProRegistDate" Type="DateTime" Precision="3" />
+          <Property Name="RegistMailCount" Type="Byte" Nullable="false" />
+          <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+          <Property Name="PersonalinfoManagement" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PassResetRequest">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpirationDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RequestType" Type="Byte" Nullable="false" />
+          <Property Name="RequestStatus" Type="Byte" Nullable="false" />
+          <Property Name="MailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AuthCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PlanCategory">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanArea">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="AreaId" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="AreaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanImage">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="ImageNo" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="ImageNo" Type="Byte" Nullable="false" />
+          <Property Name="ImageLevel" Type="Byte" Nullable="false" />
+          <Property Name="SortOrder" Type="Byte" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PlanDateStr">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="AcceptDate" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AcceptDateStr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PlanInfo">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="PublicStatus" Type="Byte" Nullable="false" />
+          <Property Name="PlanTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PlanStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlanEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PublicStartDate" Type="DateTime" Precision="0" />
+          <Property Name="PublicEndDate" Type="DateTime" Precision="0" />
+          <Property Name="PlanAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Access" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Overview" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Fee_Adult" Type="Int32" Nullable="false" />
+          <Property Name="Fee_Child" Type="Int32" Nullable="false" />
+          <Property Name="Fee_Infant" Type="Int32" Nullable="false" />
+          <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+          <Property Name="MeetingPlace" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TimeRequired" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MaxApplicantsNum" Type="Int16" />
+          <Property Name="PlanCourse" Type="String" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="HiddenFlg" Type="Boolean" Nullable="false" />
+          <Property Name="CancelPolicy" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="AllPersonFlg" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PublicPlanInfo">
+          <Key>
+            <PropertyRef Name="ProviderName" />
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="ProviderId" />
+            <PropertyRef Name="PublicStatus" />
+            <PropertyRef Name="PlanTitle" />
+            <PropertyRef Name="PlanStartDate" />
+            <PropertyRef Name="PlanEndDate" />
+            <PropertyRef Name="Fee_Adult" />
+            <PropertyRef Name="Fee_Child" />
+            <PropertyRef Name="Fee_Infant" />
+            <PropertyRef Name="DeleteFlg" />
+            <PropertyRef Name="HiddenFlg" />
+          </Key>
+          <Property Name="ProviderName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderIndustry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TantoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TantoMailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="TantoPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="PublicStatus" Type="Byte" Nullable="false" />
+          <Property Name="PlanTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PlanStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlanEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PublicStartDate" Type="DateTime" Precision="0" />
+          <Property Name="PublicEndDate" Type="DateTime" Precision="0" />
+          <Property Name="PlanAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Access" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Overview" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Fee_Adult" Type="Int32" Nullable="false" />
+          <Property Name="Fee_Child" Type="Int32" Nullable="false" />
+          <Property Name="Fee_Infant" Type="Int32" Nullable="false" />
+          <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+          <Property Name="MeetingPlace" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TimeRequired" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MaxApplicantsNum" Type="Int16" />
+          <Property Name="MinAcceptDate" Type="DateTime" Precision="0" />
+          <Property Name="MaxAcceptDate" Type="DateTime" Precision="0" />
+          <Property Name="MaxFee_Adult" Type="Int32" Nullable="false" />
+          <Property Name="MinFee_Adult" Type="Int32" Nullable="false" />
+          <Property Name="MaxFee_Child" Type="Int32" Nullable="false" />
+          <Property Name="MinFee_Infant" Type="Int32" Nullable="false" />
+          <Property Name="MinFee_Child" Type="Int32" Nullable="false" />
+          <Property Name="MaxFee_Infant" Type="Int32" Nullable="false" />
+          <Property Name="PlanCourse" Type="String" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="HiddenFlg" Type="Boolean" Nullable="false" />
+          <Property Name="CancelPolicy" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="AllPersonFlg" Type="Boolean" />
+          <Property Name="TopImageNo" Type="Byte" />
+        </EntityType>
+        <EntityType Name="PlanDate">
+          <Key>
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="AcceptDate" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fee_Adult" Type="Int32" />
+          <Property Name="Fee_Child" Type="Int32" />
+          <Property Name="Fee_Infant" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Category_M">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryLevel" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager_M">
+          <Key>
+            <PropertyRef Name="ManagerId" />
+          </Key>
+          <Property Name="ManagerId" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SMTP_ServerAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="SMTP_Port" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SMTP_User" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="SMTP_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ApplicationHeader">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationStatus" Type="Byte" Nullable="false" />
+          <Property Name="PaymentMethods" Type="Byte" Nullable="false" />
+          <Property Name="Num_Adult" Type="Int16" Nullable="false" />
+          <Property Name="Num_Child" Type="Int16" Nullable="false" />
+          <Property Name="Num_Infant" Type="Int16" Nullable="false" />
+          <Property Name="Transportation" Type="Byte" Nullable="false" />
+          <Property Name="CheckInTime" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PointCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PointCardFlg" Type="Boolean" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="27" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ApplicationPlan">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fee_Adult" Type="Int32" Nullable="false" />
+          <Property Name="Fee_Child" Type="Int32" Nullable="false" />
+          <Property Name="Fee_Infant" Type="Int32" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="UserNo" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="UserNo" Type="Int32" Nullable="false" />
+          <Property Name="UserName1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserRuby1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserRuby2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="UserAddress1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserAddress2" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Age" Type="Byte" Nullable="false" />
+          <Property Name="UserPhone1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserPhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserMailAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="Byte" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeleteFlg" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanAppInfo">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="PlanId" />
+            <PropertyRef Name="ProviderId" />
+            <PropertyRef Name="PublicStatus" />
+            <PropertyRef Name="PlanTitle" />
+            <PropertyRef Name="PlanStartDate" />
+            <PropertyRef Name="PlanEndDate" />
+            <PropertyRef Name="Plan_Fee_Adult" />
+            <PropertyRef Name="Plan_Fee_Child" />
+            <PropertyRef Name="Plan_Fee_Infant" />
+            <PropertyRef Name="HiddenFlg" />
+            <PropertyRef Name="ApplicationStatus" />
+            <PropertyRef Name="PaymentMethods" />
+            <PropertyRef Name="UserNo" />
+            <PropertyRef Name="UserName1" />
+            <PropertyRef Name="UserName2" />
+            <PropertyRef Name="UserRuby1" />
+            <PropertyRef Name="UserRuby2" />
+            <PropertyRef Name="ZipCode" />
+            <PropertyRef Name="UserAddress1" />
+            <PropertyRef Name="UserAddress2" />
+            <PropertyRef Name="BirthDate" />
+            <PropertyRef Name="Age" />
+            <PropertyRef Name="UserPhone1" />
+            <PropertyRef Name="UserMailAddress" />
+            <PropertyRef Name="Sex" />
+            <PropertyRef Name="AcceptDate" />
+            <PropertyRef Name="Num_Adult" />
+            <PropertyRef Name="Num_Child" />
+            <PropertyRef Name="Num_Infant" />
+            <PropertyRef Name="Fee_Adult" />
+            <PropertyRef Name="Fee_Child" />
+            <PropertyRef Name="Fee_Infant" />
+            <PropertyRef Name="Transportation" />
+            <PropertyRef Name="PointCardFlg" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="ProviderId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="PublicStatus" Type="Byte" Nullable="false" />
+          <Property Name="PlanTitle" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PlanStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlanEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PlanAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Access" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Overview" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Contents" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="Plan_Fee_Adult" Type="Int32" Nullable="false" />
+          <Property Name="Plan_Fee_Child" Type="Int32" Nullable="false" />
+          <Property Name="Plan_Fee_Infant" Type="Int32" Nullable="false" />
+          <Property Name="MeetingPlace" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TimeRequired" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MaxApplicantsNum" Type="Int16" />
+          <Property Name="PlanCourse" Type="String" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="HiddenFlg" Type="Boolean" Nullable="false" />
+          <Property Name="CancelPolicy" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="AllPersonFlg" Type="Boolean" />
+          <Property Name="ApplicationStatus" Type="Byte" Nullable="false" />
+          <Property Name="PaymentMethods" Type="Byte" Nullable="false" />
+          <Property Name="UserNo" Type="Int32" Nullable="false" />
+          <Property Name="UserName1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserRuby1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserRuby2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="UserAddress1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserAddress2" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserAddress3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Age" Type="Byte" Nullable="false" />
+          <Property Name="UserPhone1" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserPhone2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserMailAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="Sex" Type="Byte" Nullable="false" />
+          <Property Name="AcceptDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Num_Adult" Type="Int16" Nullable="false" />
+          <Property Name="Num_Child" Type="Int16" Nullable="false" />
+          <Property Name="Num_Infant" Type="Int16" Nullable="false" />
+          <Property Name="Fee_Adult" Type="Int32" Nullable="false" />
+          <Property Name="Fee_Child" Type="Int32" Nullable="false" />
+          <Property Name="Fee_Infant" Type="Int32" Nullable="false" />
+          <Property Name="Transportation" Type="Byte" Nullable="false" />
+          <Property Name="CheckInTime" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PointCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PointCardFlg" Type="Boolean" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplicationPayment">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="PaymentSeq" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentSeq" Type="Int32" Nullable="false" />
+          <Property Name="PaymentStatus" Type="Byte" Nullable="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShopID" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="JobCd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="Tax" Type="Int32" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="AccessID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="AccessPass" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="OrderID" Type="String" MaxLength="27" FixedLength="false" Unicode="false" />
+          <Property Name="TranID" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TranDate" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="CheckString" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ErrCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ErrInfo" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="ClientField1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClientField2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClientField3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YRS_DBModelStoreContainer" CdmEntityContainer="YRS_DBEntities">
+          <EntitySetMapping Name="Provider_M">
+            <EntityTypeMapping TypeName="YRS_DBModel.Provider_M">
+              <MappingFragment StoreEntitySet="Provider_M">
+                <ScalarProperty Name="PersonalinfoManagement" ColumnName="PersonalinfoManagement" />
+                <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+                <ScalarProperty Name="RegistMailCount" ColumnName="RegistMailCount" />
+                <ScalarProperty Name="ProRegistDate" ColumnName="ProRegistDate" />
+                <ScalarProperty Name="PreRegistDate" ColumnName="PreRegistDate" />
+                <ScalarProperty Name="TantoPhone" ColumnName="TantoPhone" />
+                <ScalarProperty Name="TantoMailAddress" ColumnName="TantoMailAddress" />
+                <ScalarProperty Name="TantoName" ColumnName="TantoName" />
+                <ScalarProperty Name="ProviderAddress" ColumnName="ProviderAddress" />
+                <ScalarProperty Name="ProviderIndustry" ColumnName="ProviderIndustry" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+                <ScalarProperty Name="ProviderPassword" ColumnName="ProviderPassword" />
+                <ScalarProperty Name="RegistStatus" ColumnName="RegistStatus" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PassResetRequest">
+            <EntityTypeMapping TypeName="YRS_DBModel.PassResetRequest">
+              <MappingFragment StoreEntitySet="PassResetRequest">
+                <ScalarProperty Name="AuthCode" ColumnName="AuthCode" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="RequestStatus" ColumnName="RequestStatus" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="ExpirationDateTime" ColumnName="ExpirationDateTime" />
+                <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanCategory">
+            <EntityTypeMapping TypeName="YRS_DBModel.PlanCategory">
+              <MappingFragment StoreEntitySet="PlanCategory">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanArea">
+            <EntityTypeMapping TypeName="YRS_DBModel.PlanArea">
+              <MappingFragment StoreEntitySet="PlanArea">
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanImage">
+            <EntityTypeMapping TypeName="YRS_DBModel.PlanImage">
+              <MappingFragment StoreEntitySet="PlanImage">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="ImageLevel" ColumnName="ImageLevel" />
+                <ScalarProperty Name="ImageNo" ColumnName="ImageNo" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanDateStr">
+            <EntityTypeMapping TypeName="YRS_DBModel.PlanDateStr">
+              <MappingFragment StoreEntitySet="PlanDateStr">
+                <ScalarProperty Name="AcceptDateStr" ColumnName="AcceptDateStr" />
+                <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanInfo">
+            <EntityTypeMapping TypeName="YRS_DBModel.PlanInfo">
+              <MappingFragment StoreEntitySet="PlanInfo">
+                <ScalarProperty Name="AllPersonFlg" ColumnName="AllPersonFlg" />
+                <ScalarProperty Name="CancelPolicy" ColumnName="CancelPolicy" />
+                <ScalarProperty Name="HiddenFlg" ColumnName="HiddenFlg" />
+                <ScalarProperty Name="PlanCourse" ColumnName="PlanCourse" />
+                <ScalarProperty Name="MaxApplicantsNum" ColumnName="MaxApplicantsNum" />
+                <ScalarProperty Name="TimeRequired" ColumnName="TimeRequired" />
+                <ScalarProperty Name="MeetingPlace" ColumnName="MeetingPlace" />
+                <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+                <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+                <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+                <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Overview" ColumnName="Overview" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+                <ScalarProperty Name="PlanAddress" ColumnName="PlanAddress" />
+                <ScalarProperty Name="PublicEndDate" ColumnName="PublicEndDate" />
+                <ScalarProperty Name="PublicStartDate" ColumnName="PublicStartDate" />
+                <ScalarProperty Name="PlanEndDate" ColumnName="PlanEndDate" />
+                <ScalarProperty Name="PlanStartDate" ColumnName="PlanStartDate" />
+                <ScalarProperty Name="PlanTitle" ColumnName="PlanTitle" />
+                <ScalarProperty Name="PublicStatus" ColumnName="PublicStatus" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublicPlanInfo">
+            <EntityTypeMapping TypeName="YRS_DBModel.PublicPlanInfo">
+              <MappingFragment StoreEntitySet="PublicPlanInfo">
+                <ScalarProperty Name="TopImageNo" ColumnName="TopImageNo" />
+                <ScalarProperty Name="AllPersonFlg" ColumnName="AllPersonFlg" />
+                <ScalarProperty Name="CancelPolicy" ColumnName="CancelPolicy" />
+                <ScalarProperty Name="HiddenFlg" ColumnName="HiddenFlg" />
+                <ScalarProperty Name="PlanCourse" ColumnName="PlanCourse" />
+                <ScalarProperty Name="MaxFee_Infant" ColumnName="MaxFee_Infant" />
+                <ScalarProperty Name="MinFee_Child" ColumnName="MinFee_Child" />
+                <ScalarProperty Name="MinFee_Infant" ColumnName="MinFee_Infant" />
+                <ScalarProperty Name="MaxFee_Child" ColumnName="MaxFee_Child" />
+                <ScalarProperty Name="MinFee_Adult" ColumnName="MinFee_Adult" />
+                <ScalarProperty Name="MaxFee_Adult" ColumnName="MaxFee_Adult" />
+                <ScalarProperty Name="MaxAcceptDate" ColumnName="MaxAcceptDate" />
+                <ScalarProperty Name="MinAcceptDate" ColumnName="MinAcceptDate" />
+                <ScalarProperty Name="MaxApplicantsNum" ColumnName="MaxApplicantsNum" />
+                <ScalarProperty Name="TimeRequired" ColumnName="TimeRequired" />
+                <ScalarProperty Name="MeetingPlace" ColumnName="MeetingPlace" />
+                <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+                <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+                <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+                <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Overview" ColumnName="Overview" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+                <ScalarProperty Name="PlanAddress" ColumnName="PlanAddress" />
+                <ScalarProperty Name="PublicEndDate" ColumnName="PublicEndDate" />
+                <ScalarProperty Name="PublicStartDate" ColumnName="PublicStartDate" />
+                <ScalarProperty Name="PlanEndDate" ColumnName="PlanEndDate" />
+                <ScalarProperty Name="PlanStartDate" ColumnName="PlanStartDate" />
+                <ScalarProperty Name="PlanTitle" ColumnName="PlanTitle" />
+                <ScalarProperty Name="PublicStatus" ColumnName="PublicStatus" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="TantoPhone" ColumnName="TantoPhone" />
+                <ScalarProperty Name="TantoMailAddress" ColumnName="TantoMailAddress" />
+                <ScalarProperty Name="TantoName" ColumnName="TantoName" />
+                <ScalarProperty Name="ProviderAddress" ColumnName="ProviderAddress" />
+                <ScalarProperty Name="ProviderIndustry" ColumnName="ProviderIndustry" />
+                <ScalarProperty Name="ProviderName" ColumnName="ProviderName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanDate">
+            <EntityTypeMapping TypeName="YRS_DBModel.PlanDate">
+              <MappingFragment StoreEntitySet="PlanDate">
+                <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+                <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+                <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+                <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category_M">
+            <EntityTypeMapping TypeName="YRS_DBModel.Category_M">
+              <MappingFragment StoreEntitySet="Category_M">
+                <ScalarProperty Name="CategoryLevel" ColumnName="CategoryLevel" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manager_M">
+            <EntityTypeMapping TypeName="YRS_DBModel.Manager_M">
+              <MappingFragment StoreEntitySet="Manager_M">
+                <ScalarProperty Name="SMTP_Password" ColumnName="SMTP_Password" />
+                <ScalarProperty Name="SMTP_User" ColumnName="SMTP_User" />
+                <ScalarProperty Name="SMTP_Port" ColumnName="SMTP_Port" />
+                <ScalarProperty Name="SMTP_ServerAddress" ColumnName="SMTP_ServerAddress" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="ManagerPassword" ColumnName="ManagerPassword" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationHeader">
+            <EntityTypeMapping TypeName="YRS_DBModel.ApplicationHeader">
+              <MappingFragment StoreEntitySet="ApplicationHeader">
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="PointCardFlg" ColumnName="PointCardFlg" />
+                <ScalarProperty Name="PointCardNo" ColumnName="PointCardNo" />
+                <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+                <ScalarProperty Name="Transportation" ColumnName="Transportation" />
+                <ScalarProperty Name="Num_Infant" ColumnName="Num_Infant" />
+                <ScalarProperty Name="Num_Child" ColumnName="Num_Child" />
+                <ScalarProperty Name="Num_Adult" ColumnName="Num_Adult" />
+                <ScalarProperty Name="PaymentMethods" ColumnName="PaymentMethods" />
+                <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationPlan">
+            <EntityTypeMapping TypeName="YRS_DBModel.ApplicationPlan">
+              <MappingFragment StoreEntitySet="ApplicationPlan">
+                <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+                <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+                <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+                <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationUser">
+            <EntityTypeMapping TypeName="YRS_DBModel.ApplicationUser">
+              <MappingFragment StoreEntitySet="ApplicationUser">
+                <ScalarProperty Name="DeleteFlg" ColumnName="DeleteFlg" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="UserMailAddress" ColumnName="UserMailAddress" />
+                <ScalarProperty Name="UserPhone2" ColumnName="UserPhone2" />
+                <ScalarProperty Name="UserPhone1" ColumnName="UserPhone1" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="UserAddress3" ColumnName="UserAddress3" />
+                <ScalarProperty Name="UserAddress2" ColumnName="UserAddress2" />
+                <ScalarProperty Name="UserAddress1" ColumnName="UserAddress1" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="UserRuby2" ColumnName="UserRuby2" />
+                <ScalarProperty Name="UserRuby1" ColumnName="UserRuby1" />
+                <ScalarProperty Name="UserName2" ColumnName="UserName2" />
+                <ScalarProperty Name="UserName1" ColumnName="UserName1" />
+                <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanAppInfo">
+            <EntityTypeMapping TypeName="YRS_DBModel.PlanAppInfo">
+              <MappingFragment StoreEntitySet="PlanAppInfo">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PointCardFlg" ColumnName="PointCardFlg" />
+                <ScalarProperty Name="PointCardNo" ColumnName="PointCardNo" />
+                <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+                <ScalarProperty Name="Transportation" ColumnName="Transportation" />
+                <ScalarProperty Name="Fee_Infant" ColumnName="Fee_Infant" />
+                <ScalarProperty Name="Fee_Child" ColumnName="Fee_Child" />
+                <ScalarProperty Name="Fee_Adult" ColumnName="Fee_Adult" />
+                <ScalarProperty Name="Num_Infant" ColumnName="Num_Infant" />
+                <ScalarProperty Name="Num_Child" ColumnName="Num_Child" />
+                <ScalarProperty Name="Num_Adult" ColumnName="Num_Adult" />
+                <ScalarProperty Name="AcceptDate" ColumnName="AcceptDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="UserMailAddress" ColumnName="UserMailAddress" />
+                <ScalarProperty Name="UserPhone2" ColumnName="UserPhone2" />
+                <ScalarProperty Name="UserPhone1" ColumnName="UserPhone1" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="UserAddress3" ColumnName="UserAddress3" />
+                <ScalarProperty Name="UserAddress2" ColumnName="UserAddress2" />
+                <ScalarProperty Name="UserAddress1" ColumnName="UserAddress1" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="UserRuby2" ColumnName="UserRuby2" />
+                <ScalarProperty Name="UserRuby1" ColumnName="UserRuby1" />
+                <ScalarProperty Name="UserName2" ColumnName="UserName2" />
+                <ScalarProperty Name="UserName1" ColumnName="UserName1" />
+                <ScalarProperty Name="UserNo" ColumnName="UserNo" />
+                <ScalarProperty Name="PaymentMethods" ColumnName="PaymentMethods" />
+                <ScalarProperty Name="ApplicationStatus" ColumnName="ApplicationStatus" />
+                <ScalarProperty Name="AllPersonFlg" ColumnName="AllPersonFlg" />
+                <ScalarProperty Name="CancelPolicy" ColumnName="CancelPolicy" />
+                <ScalarProperty Name="HiddenFlg" ColumnName="HiddenFlg" />
+                <ScalarProperty Name="PlanCourse" ColumnName="PlanCourse" />
+                <ScalarProperty Name="MaxApplicantsNum" ColumnName="MaxApplicantsNum" />
+                <ScalarProperty Name="TimeRequired" ColumnName="TimeRequired" />
+                <ScalarProperty Name="MeetingPlace" ColumnName="MeetingPlace" />
+                <ScalarProperty Name="Plan_Fee_Infant" ColumnName="Plan_Fee_Infant" />
+                <ScalarProperty Name="Plan_Fee_Child" ColumnName="Plan_Fee_Child" />
+                <ScalarProperty Name="Plan_Fee_Adult" ColumnName="Plan_Fee_Adult" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Overview" ColumnName="Overview" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+                <ScalarProperty Name="PlanAddress" ColumnName="PlanAddress" />
+                <ScalarProperty Name="PlanEndDate" ColumnName="PlanEndDate" />
+                <ScalarProperty Name="PlanStartDate" ColumnName="PlanStartDate" />
+                <ScalarProperty Name="PlanTitle" ColumnName="PlanTitle" />
+                <ScalarProperty Name="PublicStatus" ColumnName="PublicStatus" />
+                <ScalarProperty Name="ProviderId" ColumnName="ProviderId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ApplicationPayment">
+            <EntityTypeMapping TypeName="YRS_DBModel.ApplicationPayment">
+              <MappingFragment StoreEntitySet="ApplicationPayment">
+                <ScalarProperty Name="ClientField3" ColumnName="ClientField3" />
+                <ScalarProperty Name="ClientField2" ColumnName="ClientField2" />
+                <ScalarProperty Name="ClientField1" ColumnName="ClientField1" />
+                <ScalarProperty Name="ErrInfo" ColumnName="ErrInfo" />
+                <ScalarProperty Name="ErrCode" ColumnName="ErrCode" />
+                <ScalarProperty Name="CheckString" ColumnName="CheckString" />
+                <ScalarProperty Name="TranDate" ColumnName="TranDate" />
+                <ScalarProperty Name="TranID" ColumnName="TranID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="AccessPass" ColumnName="AccessPass" />
+                <ScalarProperty Name="AccessID" ColumnName="AccessID" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="JobCd" ColumnName="JobCd" />
+                <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="PaymentSeq" ColumnName="PaymentSeq" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="なし" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

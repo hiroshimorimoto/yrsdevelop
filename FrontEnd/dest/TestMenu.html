@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>予約システム 開発メニュー</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./md5.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex align-items-center justify-content-center">
+          <h1>予約システム 開発メニュー</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-primary ">運営者</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-primary"
+                onclick="movePage('manager')"
+              >
+                運営者トップへ
+              </button>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-primary ">運営者</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-primary"
+                onclick="moveManagerRemind('passChange')"
+              >
+                運営者パスワード変更
+              </button>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-primary ">運営者</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-primary"
+                onclick="moveManagerRemind('passReset')"
+              >
+                運営者パスワードリセット
+              </button>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-primary ">運営者</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-primary"
+                onclick="moveManagerRemind('passConf')"
+              >
+                運営者パスワードリセット確認
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-success ">事業者</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-success"
+                onclick="movePage('provider')"
+              >
+                事業者トップへ
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-success ">事業者</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-success"
+                onclick="moveProviderRemind('passChange')"
+              >
+                事業者パスワード変更
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-success ">事業者</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-success"
+                onclick="moveProviderRemind('passReset')"
+              >
+                事業者パスワードリセット
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-success ">事業者</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-success"
+                onclick="moveProviderRemind('passConf')"
+              >
+                事業者パスワードリセット確認
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-warning ">一般ユーザ</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-warning"
+                onclick="movePage('customer')"
+              >
+                一般ユーザトップへ
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-warning ">一般ユーザ</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-warning"
+                onclick="movePlanView(2)"
+              >
+                一般ユーザ プランビュー
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-warning ">一般ユーザ</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-warning"
+                onclick="moveApplication()"
+              >
+                申込画面
+              </button>
+            </div>
+          </div>
+
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-dark ">決済テスト</span>
+            </div>
+            <input type="number" id="order_no" value="1" />
+          </div>
+          <div class="row p-1">
+            <div
+              class="col-6 d-flex align-items-center justify-content-end"
+            ></div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-dark"
+                onclick="PaymentTest()"
+              >
+                決済テスト
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div
+              class="col-6 d-flex align-items-center justify-content-end"
+            ></div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-dark"
+                onclick="PaymentCompTest()"
+              >
+                カード決済完了
+              </button>
+            </div>
+          </div>
+
+          <div class="row p-1">
+            <div class="col-6 d-flex align-items-center justify-content-end">
+              <span class="badge badge-light ">決済メール本文確認</span>
+            </div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <input type="number" id="app_id" value="65" />
+            </div>
+          </div>
+          <div class="row p-1">
+            <div
+              class="col-6 d-flex align-items-center justify-content-end"
+            ></div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-dark"
+                onclick="PaymentCompMailTest('Manager')"
+              >
+                管理者向け Manager
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div
+              class="col-6 d-flex align-items-center justify-content-end"
+            ></div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-dark"
+                onclick="PaymentCompMailTest('Provider')"
+              >
+                事業者向け Provider
+              </button>
+            </div>
+          </div>
+          <div class="row p-1">
+            <div
+              class="col-6 d-flex align-items-center justify-content-end"
+            ></div>
+            <div class="col-6 d-flex align-items-center justify-content-start">
+              <button
+                type="button"
+                class="btn p-1 btn-outline-dark"
+                onclick="PaymentCompMailTest('Customer')"
+              >
+                顧客向け Customer
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function movePlanView(planId) {
+        document.location = "./customer/planview.html?pid=" + planId;
+      }
+      function movePage(page) {
+        console.log(page);
+        document.location = "./" + page + "/index.html";
+      }
+      function moveManagerRemind(mode) {
+        document.location = "./manager/remind.html#/" + mode;
+      }
+      function moveProviderRemind(mode) {
+        document.location = "./provider/remind.html#/" + mode;
+      }
+      function moveApplication() {
+        //TODO:デバッグ
+        var planIdList = [2, 5, 11, 32];
+        var planDateList = [
+          "2021/02/20",
+          "2021/02/21",
+          "2021/02/22",
+          "2021/02/23",
+        ];
+
+        var q = "?";
+        for (var i = 0; i < planIdList.length; i++) {
+          q += "plan" + (i + 1).toString().padStart(2, "0");
+          q += "=";
+          q += planIdList[i];
+          q += ",";
+          q += planDateList[i];
+          q += "&";
+        }
+        q = q.substring(0, q.length - 1);
+
+        document.location = "./application/index.html" + q;
+      }
+
+      function PaymentCompTest() {
+        document.location = "./application/index.html?appId=35";
+      }
+      function PaymentCompMailTest(type) {
+        document.location = "./pay/mailtest/" + type + "/" + $("#app_id").val();
+      }
+
+      function PaymentTest() {
+        var url = "https://stg.link.mul-pay.jp/link/tshop00047268/Multi/Entry";
+        //var retUrl = "http://localhost:8080/TestMenu.html";
+        var retUrl = "https://yrsweb.azurewebsites.net/pay/result";
+
+        var orderNo = $("#order_no").val();
+        orderNo = orderNo.padStart(8, "0");
+
+        var dateNow = datetostr(new Date(), "YYYYMMDDhhmmss", false);
+        var shopPass = ""; //TODO
+
+        var data = {
+          ShopID: "tshop00047268",
+          OrderID: orderNo,
+          Amount: "1980",
+          DateTime: dateNow,
+          ShopPassString: "",
+          RetURL: retUrl,
+          CancelURL: retUrl,
+          TemplateNo: "1",
+
+          UseCredit: "1", //クレジット利用
+          JobCd:
+            "CAPTURE" /*以下のいずれかを設定します。
+                      CHECK：有効性チェック
+                      CAPTURE：即時売上
+                      AUTH：仮売上
+                      ※CHECK はクレジットカード決済時のみ
+                      有効です。*/,
+        };
+
+        //ショップ情報チェック文字列
+        var shopPassString = getShopPassString(data);
+        data.ShopPassString = shopPassString;
+
+        //新しいWindowを開き、そこにPOST
+        postOpenNewWindow(url, data);
+      }
+
+      //ショップ情報チェック文字列
+      function getShopPassString(data) {
+        var str = "";
+
+        str += data.ShopID; //ショップID
+        str += "|";
+
+        str += data.OrderID; //オーダーID
+        str += "|";
+
+        str += data.Amount; //利用金額
+        str += "|";
+
+        str += ""; //税送料？
+        str += "|";
+
+        str += "xrkdckaq"; //ショップパスワード
+        str += "|";
+
+        str += data.DateTime; //日時情報
+        //str += "|";
+
+        var ret = CybozuLabs.MD5.calc(str);
+
+        return ret;
+      }
+
+      function getMemberPassString() {}
+
+      function postOpenNewWindow(url, data) {
+        var html = '<form id="temp_form" style="display:none;">';
+        for (var x in data) {
+          if (data[x] == undefined || data[x] == null) {
+            continue;
+          }
+          var _val = data[x].replace(/'/g, "'");
+          html +=
+            "<input type='hidden' name='" + x + "' value='" + _val + "' >";
+        }
+        html += "</form>";
+        $("body").append(html);
+
+        window.open("", "new_window");
+
+        // $("#temp_form").action = url;
+        // $("#temp_form").method = "POST";
+        // $("#temp_form").target = "new_window";
+        $("#temp_form").attr("action", url);
+        $("#temp_form").attr("method", "POST");
+        $("#temp_form").attr("target", "new_window");
+
+        $("#temp_form").submit();
+
+        $("#temp_form").remove();
+      }
+
+      function datetostr(date, format, is12hours) {
+        var weekday = ["日", "月", "火", "水", "木", "金", "土"];
+        if (!format) {
+          format = "YYYY/MM/DD(WW) hh:mm:dd";
+        }
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var weekday = weekday[date.getDay()];
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var secounds = date.getSeconds();
+
+        var ampm = hours < 12 ? "AM" : "PM";
+        if (is12hours) {
+          hours = hours % 12;
+          hours = hours != 0 ? hours : 12; // 0時は12時と表示する
+        }
+
+        var replaceStrArray = {
+          YYYY: year,
+          Y: year,
+          MM: ("0" + month).slice(-2),
+          M: month,
+          DD: ("0" + day).slice(-2),
+          D: day,
+          WW: weekday,
+          hh: ("0" + hours).slice(-2),
+          h: hours,
+          mm: ("0" + minutes).slice(-2),
+          m: minutes,
+          ss: ("0" + secounds).slice(-2),
+          s: secounds,
+          AP: ampm,
+        };
+
+        var replaceStr = "(" + Object.keys(replaceStrArray).join("|") + ")";
+        var regex = new RegExp(replaceStr, "g");
+
+        ret = format.replace(regex, function(str) {
+          return replaceStrArray[str];
+        });
+
+        return ret;
+      }
+    </script>
+  </body>
+</html>

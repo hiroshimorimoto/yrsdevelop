@@ -1,0 +1,166 @@
+﻿@model YrsWeb.Lib.Dto.AppEditModel
+@using RazorEngine.Templating;
+@using YrsWeb.Lib.Dto;
+@using YrsWeb.Lib.Models;
+@using YrsWeb.Lib.Common;
+@using YrsWeb;
+@{
+ApplicationUser mainUser = Model.ApplicationUsers[0];
+}
+@mainUser.UserName_Full（@mainUser.UserRuby_Full） 様
+
+※このメールは「お客様控え」として保管ください※
+※このメールは自動返信メールとなります※
+
+この度は、数ある旅行サイトの中から「よしのリザーブ」をご利用いただきまして誠にありがとうございます。
+下記の通りお申込を受付ました。
+近日中にお申込ツアー催行会社よりご連絡いたしますので、今しばらくお待ちください。
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+お申込情報
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+■ご注文番号
+@Model.ApplicationHeader.OrderNo
+
+■ご注文日
+@Model.ApplicationHeader.InsertDateStr
+
+■お申込人数
+@(Model.ApplicationHeader.SumNum)人（大人：@(Model.ApplicationHeader.Num_Adult)人、子供：@(Model.ApplicationHeader.Num_Child)人、幼児：@(Model.ApplicationHeader.Num_Child)人）
+
+■集合場所（又は宿）までの交通手段
+@Model.ApplicationHeader.TransportationTitle
+
+@if (!String.IsNullOrEmpty(Model.ApplicationHeader.CheckInTime))
+{
+<text>
+■チェックイン時間
+＠Model.ApplicationHeader.CheckInTime
+</text>
+}
+
+■お申込ツアー
+@for (int i = 0; i < Model.ApplicationPlans.Count; i++)
+{
+ApplicationPlan appPlan = Model.ApplicationPlans[i];
+PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
+<text>
+@planModel.PlanInfo.PlanTitle
+ツアー催行日：@appPlan.AcceptDate
+ツアー詳細情報：@planModel.PlanInfo.PlanPageUrl
+</text>
+}
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+お支払い情報
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+@for (int i = 0; i < Model.ApplicationPlans.Count; i++)
+{
+ApplicationHeader header = Model.ApplicationHeader;
+ApplicationPlan appPlan = Model.ApplicationPlans[i];
+PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
+<text>
+@planModel.PlanInfo.PlanTitle（@appPlan.AcceptDate）
+大人料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Adult))円 ×　@(header.Num_Adult)名
+子供料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Child))円 ×　@(header.Num_Child)名
+幼児料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Infant))円 ×　@(header.Num_Infant)名
+</text>
+}
+------------------------------
+合計 ：　@(Statics.GetCommaNum(Model.GetSumFee()))円
+
+■お支払い方法
+@(Model.ApplicationHeader.PaymentMethodTitle)
+@if (Model.ApplicationHeader.PaymentMethods == 1)
+{
+<text>
+ゆうちょ銀行へのお振込となりますため、
+ゆうちょ銀行からお振込の場合と他銀行からお振込の場合で情報が異なります。
+ご注意ください。
+また、お申込者様とお振込者様名が異なる場合はご連絡をお願い致します。
+
+ゆうちょ銀行からのお振込
+記号：14520
+番号：26679071
+口座名義人（カナ）：イッパンホウジン ヨシノビジターズビューロー
+口座名義人（漢字）:一般社団法人 吉野ビジターズビューロー
+
+他銀行からのお振込
+銀行名：ゆうちょ銀行
+支店名：四五八
+店番号：458
+口座番号：（普通）2667907
+口座名義人（カナ）：イッパンホウジン ヨシノビジターズビューロー
+口座名義人（漢字）:一般社団法人 吉野ビジターズビューロー
+</text>
+}
+
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+お申込者様情報（代表者様情報）
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+■お名前
+@mainUser.UserName_Full（@mainUser.UserRuby_Full）
+■ご住所
+〒@mainUser.ZipCode
+@mainUser.UserAddress_Full
+■生年月日
+@mainUser.BirthDateStr（@(mainUser.Age)歳）
+■お電話番号
+@mainUser.UserPhone1
+■緊急連絡先
+@mainUser.UserPhone2
+■メールアドレス
+@mainUser.UserMailAddress
+@for (int i = 1; i < Model.ApplicationUsers.Count; i++)
+{
+ApplicationUser subUser = Model.ApplicationUsers[i];
+<text>
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+■お名前
+@subUser.UserName_Full（@subUser.UserRuby_Full）
+■ご住所
+〒@subUser.ZipCode
+@subUser.UserAddress_Full
+■生年月日
+@subUser.BirthDateStr（@(subUser.Age)歳）
+■お電話番号
+@subUser.UserPhone1
+</text>
+}
+
+
+============================================================
+＜＜予約内容の確認・変更・キャンセルについて＞＞
+ご予約頂いておりますツアーの催行会社へ、直接連絡をお願い致します。
+ご予約内容変更の場合、ご予約の取り直しとなる可能性もございます。ご了承ください。
+キャンセルの場合、各ツアーのキャンセルポリシーに準拠したキャンセル料が発生する場合がございます。
+詳細は、ツアー詳細ページをご確認ください。
+ご予約内容の変更やキャンセルの場合、支払い方法によっては弊社払戻手数料を別途頂戴する場合がございます。
+詳しくは、キャンセルポリシーのページをご参照ください。
+https://yoshino-reserve.com/cancel_policy/
+
+＜＜その他お問合せについて＞＞
+サイトのお問合せフォーム、またはお電話にてお問合せください。
+電話番号：0746-34-2522
+受付時間：9:00～17:00(土日祝日、年末年始を除く)
+問合せフォーム：
+https://yoshino-reserve.com/contact/
+
+-----
+奈良 吉野がもっと好きになる！WEBマガジンサイト「よしのーと！」
+https://yoshi-note.com/
+奈良吉野に精通するプロが厳選した特産品をご紹介します「まるっと！吉野逸品ガイド」
+https://www.yoshino-ec.com/
+奈良吉野が育んだ逸品をぜひ一度ご堪能下さい「吉野オンラインSHOP」
+http://shinzenryu.yoshino-ec.com/
+吉野町ふるさと納税専用サイト「吉野町ふるさと納税」
+http://furusato.yoshino-ec.com/
+-------------------------------------------------------------
+一般社団法人吉野ビジターズビューロー
+よしのリザーブ 問合せ窓口
+〒639-3111 奈良県吉野郡吉野町上市77-1
+【Mail】info@yoshino-reserve.com
+【Tel】0746-34-2522　
+【Fax】0746-39-9238
+【受付時間】9:00～17:00(土日祝日、年末年始を除く)
+-------------------------------------------------------------
