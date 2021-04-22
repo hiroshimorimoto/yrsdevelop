@@ -33,7 +33,7 @@ export default {
         et.NewPasswordConf = this.$refs.base.NewPasswordConf;
 
         //パスワード変更確認
-        await ManagerAuthBiz.ResetPasswordConfirm(this.Et);
+        await ManagerAuthBiz.ResetPasswordConfirm(et);
 
         this.$refs.base.Loading = false;
         this.$refs.base.IsComplete = true;

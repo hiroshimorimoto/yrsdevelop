@@ -16,12 +16,12 @@ import PassResetBase from "../../common/PassResetBase";
 export default {
   methods: {
     //パスワードリセットリクエスト
-    doPassReset: async function() {
+    doPassReset: async function () {
       this.$refs.base.ErrorMessage = "";
       this.$refs.base.Loading = true;
 
       try {
-        await ManagerAuthBiz.ResetPasswordRequest(this.AuthCode);
+        await ManagerAuthBiz.ResetPasswordRequest(this.$refs.base.AuthCode);
 
         this.$refs.base.Loading = false;
         this.$refs.base.IsComplete = true;
@@ -30,15 +30,15 @@ export default {
         this.$refs.base.Loading = false;
       }
     },
-    close: function() {
+    close: function () {
       window.close();
-    }
+    },
   },
   mounted() {
     this.$bvModal.show("passResetModal");
   },
   components: {
-    PassResetBase: PassResetBase
-  }
+    PassResetBase: PassResetBase,
+  },
 };
 </script>

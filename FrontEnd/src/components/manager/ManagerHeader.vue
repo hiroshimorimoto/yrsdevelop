@@ -3,14 +3,15 @@
 
 <template>
   <b-navbar toggleable="sm" type="dark" variant="primary">
-    <b-navbar-brand href="#">{{menu_title}}</b-navbar-brand>
+    <b-navbar-brand href="#">{{ menu_title }}</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item v-if="isLoggedin" href="#" @click="goLink('providerList')">事業者一覧</b-nav-item>
-        <b-nav-item v-if="isLoggedin" href="#" @click="goLink('reserveList')">申込一覧</b-nav-item>
+        <b-nav-item v-if="isLoggedin" href="#" @click="goLink('providerList')"
+          >事業者一覧</b-nav-item>
+        <!-- <b-nav-item v-if="isLoggedin" href="#" @click="goLink('reserveList')">申込一覧</b-nav-item> -->
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
@@ -20,7 +21,9 @@
           role="status"
           aria-hidden="true"
         ></span>
-        <b-nav-item v-if="isLoggedin" href="#" @click="doLogout">ログアウト</b-nav-item>
+        <b-nav-item v-if="isLoggedin" href="#" @click="doLogout"
+          >ログアウト</b-nav-item
+        >
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>

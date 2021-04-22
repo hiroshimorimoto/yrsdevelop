@@ -38,23 +38,12 @@ namespace YrsWeb.Controllers
 			return this.GetResult(bizObject, resourceName, (string)null);
 		}
 
-
-		//[HttpPost("{bizName}/{methodName}")]
-		//[Produces("application/json")]
-		//public ApiResult<string> Post(string bizName, string methodName, string body)
-		//{
-		//    Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:8080/";
-		//    Response.Headers["Access-Control-Allow-Credentials"] = "true";
-		//    object bizObject = this.GetBizObject(bizName);
-		//    return this.GetResult(bizObject, methodName, body);
-		//}
-
 		[HttpPost("{bizName}/{methodName}")]
 		[Produces("application/json")]
 		public ApiResult<string> Post(string bizName, string methodName, [FromBody] JObject jo)
 		{
 #if DEBUG
-			Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:8080/";
+			Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:8080";
 #else
 			Response.Headers["Access-Control-Allow-Origin"] = "https://yoshino-reserve.com/";
 #endif
@@ -67,6 +56,14 @@ namespace YrsWeb.Controllers
 		[Produces("application/json")]
 		public ApiResult<string> PostWithBizMethod(string bizName, [FromBody] JObject jo)
 		{
+#if DEBUG
+			Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:8080";
+#else
+			Response.Headers["Access-Control-Allow-Origin"] = "https://yoshino-reserve.com/";
+#endif
+			Response.Headers["Access-Control-Allow-Credentials"] = "true";
+
+
 			string bizMethodJson = jo.ToString(Formatting.None);
 
 			object bizObject = this.GetBizObject(bizName);
@@ -80,11 +77,12 @@ namespace YrsWeb.Controllers
 		public ApiResult<string> PostWithFiles(string bizName, string methodName, string jsonData, List<IFormFile> files)
 		{
 #if DEBUG
-			Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:8080/";
+			Response.Headers["Access-Control-Allow-Origin"] = "http://localhost:8080";
 #else
 			Response.Headers["Access-Control-Allow-Origin"] = "https://yoshino-reserve.com/";
 #endif
 			Response.Headers["Access-Control-Allow-Credentials"] = "true";
+
 			object bizObject = this.GetBizObject(bizName);
 
 			JObject jo = JObject.Parse(jsonData);
@@ -103,17 +101,6 @@ namespace YrsWeb.Controllers
 			BizMethodInfo bizMethodInfoObj = JsonConvert.DeserializeObject<BizMethodInfo>(bizMethodJson);
 			return this.GetResult(bizObject, bizMethodInfoObj, files);
 		}
-
-
-		//[HttpPost("{bizName}")]
-		//[Produces("application/json")]
-		//public ApiResult<string> PostWithBizMethod(string bizName, string bizMethodInfo)
-		//{
-		//    object bizObject = this.GetBizObject(bizName);
-
-		//    BizMethodInfo bizMethodInfoObj = JsonConvert.DeserializeObject<BizMethodInfo>(bizMethodInfo);
-		//    return this.GetResult(bizObject, bizMethodInfoObj);
-		//}
 
 
 		private object GetBizObject(string bizName)

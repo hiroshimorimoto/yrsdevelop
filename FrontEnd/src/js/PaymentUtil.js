@@ -1,5 +1,5 @@
-
-const payUrl = "https://stg.link.mul-pay.jp/link/" + process.env.PAYMENT_SHOP_ID + "/Multi/Entry";
+const payUrl = "https://link.mul-pay.jp/link/" + process.env.PAYMENT_SHOP_ID + "/Multi/Entry";
+//const payUrl = "https://stg.link.mul-pay.jp/link/" + process.env.PAYMENT_SHOP_ID + "/Multi/Entry";
 const retUrl = "https://yrsweb.azurewebsites.net/pay/result";
 
 import jquery from "jquery";
@@ -676,7 +676,7 @@ export default class PaymentUtil {
             OrderID: orderNo,
             Amount: "" + amount,
             DateTime: dateNow,
-            ShopPassString: "",
+            ShopPassString: "h8synk5m",
             RetURL: retUrl,
             CancelURL: retUrl,
             TemplateNo: "1",
@@ -744,7 +744,7 @@ export default class PaymentUtil {
         str += ""; //税送料？
         str += "|";
 
-        str += "xrkdckaq"; //ショップパスワード
+        str += "h8synk5m"; //ショップパスワード
         str += "|";
 
         str += data.DateTime; //日時情報
