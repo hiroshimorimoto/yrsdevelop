@@ -36,9 +36,10 @@
 {
 ApplicationPlan appPlan = Model.ApplicationPlans[i];
 PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
+String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
 <text>
 @planModel.PlanInfo.PlanTitle
-ツアー催行日：@appPlan.AcceptDate
+ツアー催行日：@acceptDateStr
 ツアー詳細情報：@planModel.PlanInfo.PlanPageUrl
 </text>
 }
@@ -51,8 +52,9 @@ PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.
 ApplicationHeader header = Model.ApplicationHeader;
 ApplicationPlan appPlan = Model.ApplicationPlans[i];
 PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
+String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
 <text>
-@planModel.PlanInfo.PlanTitle（@appPlan.AcceptDate）
+@planModel.PlanInfo.PlanTitle（@acceptDateStr）
 大人料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Adult))円 ×　@(header.Num_Adult)名
 子供料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Child))円 ×　@(header.Num_Child)名
 幼児料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Infant))円 ×　@(header.Num_Infant)名
