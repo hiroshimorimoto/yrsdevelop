@@ -152,7 +152,7 @@ fieldset.form-group {
                     <b-col>
                       <!-- プラン開始・終了 & 受付可能日設定  -->
                       <b-form-group
-                        label="プランの受付期間："
+                        label="プランの掲載期間："
                         label-size="md"
                         label-cols="3"
                         label-align="left"
@@ -276,7 +276,7 @@ fieldset.form-group {
                             :state="ValidateState('Fee_Child')"
                             aria-describedby="Fee_Child-fb"
                           ></b-form-input>
-                          <b-form-text>※小学生</b-form-text>
+                          <b-form-text>※２歳～小学生以下</b-form-text>
                           <b-form-invalid-feedback id="Fee_Child-fb">
                             <small v-if="!$v.Fee_Child.numeric"
                               >数値で入力してください</small
@@ -299,7 +299,7 @@ fieldset.form-group {
                             :state="ValidateState('Fee_Infant')"
                             aria-describedby="Fee_Infant-fb"
                           ></b-form-input>
-                          <b-form-text>※未就学児</b-form-text>
+                          <b-form-text>※２歳未満</b-form-text>
                           <b-form-invalid-feedback id="Fee_Infant-fb">
                             <small v-if="!$v.Fee_Infant.numeric"
                               >数値で入力してください</small
@@ -720,6 +720,45 @@ import ImageCard from "@components/common/ImageCard"; //画像カード
 
 import PlanImage from "@js/model/PlanImage";
 
+function initialState() {
+  return {
+    HeaderTitle: "",
+    PlanId: "", //プランID
+    ProviderId: "", //事業者ID
+    PublicStatus: "", //公開ステータス
+    PlanTitle: "", //プランタイトル
+    PlanStartDate: "", //プラン開始日
+    PlanEndDate: "", //プラン終了日
+    PublicStartDate: "", //公開開始日
+    PublicEndDate: "", //公開終了日
+    PlanAddress: "", //会場住所
+    Access: "", //アクセス
+    Overview: "", //概要
+    Contents: "", //プラン内容
+    Fee_Adult: 0, //大人料金
+    Fee_Child: 0, //児童料金
+    Fee_Infant: 0, //幼児料金
+    DeleteFlg: 0, //削除フラグ
+
+    MeetingPlace: "", //集合場所
+    TimeRequired: "", //所要時間
+    MaxApplicantsNum: 0, //最大申込人数
+    PlanCourse: "", // コース
+    HiddenFlg: false, // 非表示フラグ
+    AllPersonFlg: false, // 全個人情報フラグ
+    CancelPolicy: "", // キャンセルポリシー
+
+    AcceptDates: [], //受付可能日付
+    SelectedCategoryIds: [], //カテゴリ
+    SelectedAreaIds: [], //選択エリア
+    TopImage: null, //選択済み トップ画像エンティティ
+    TempImages: [], //選択済み 添付イメージファイルリスト
+
+    SelectedTopImageFileName: null, //※登録用 画面選択された トップ画像 ファイル名
+    TopImageUrl: "", //※初期表示用 選択済 トップ画像URL
+  };
+}
+
 export default {
   mixins: [validationMixin],
   components: {
@@ -735,42 +774,40 @@ export default {
     ImageCard,
   },
   data() {
-    return {
-      HeaderTitle: "",
-      PlanId: "", //プランID
-      ProviderId: "", //事業者ID
-      PublicStatus: "", //公開ステータス
-      PlanTitle: "", //プランタイトル
-      PlanStartDate: "", //プラン開始日
-      PlanEndDate: "", //プラン終了日
-      PublicStartDate: "", //公開開始日
-      PublicEndDate: "", //公開終了日
-      PlanAddress: "", //会場住所
-      Access: "", //アクセス
-      Overview: "", //概要
-      Contents: "", //プラン内容
-      Fee_Adult: 0, //大人料金
-      Fee_Child: 0, //児童料金
-      Fee_Infant: 0, //幼児料金
-      DeleteFlg: 0, //削除フラグ
-
-      MeetingPlace: "", //集合場所
-      TimeRequired: "", //所要時間
-      MaxApplicantsNum: 0, //最大申込人数
-      PlanCourse: "", // コース
-      HiddenFlg: false, // 非表示フラグ
-      AllPersonFlg: false, // 全個人情報フラグ
-      CancelPolicy: "", // キャンセルポリシー
-
-      AcceptDates: [], //受付可能日付
-      SelectedCategoryIds: [], //カテゴリ
-      SelectedAreaIds: [], //選択エリア
-      TopImage: null, //選択済み トップ画像エンティティ
-      TempImages: [], //選択済み 添付イメージファイルリスト
-
-      SelectedTopImageFileName: null, //※登録用 画面選択された トップ画像 ファイル名
-      TopImageUrl: "", //※初期表示用 選択済 トップ画像URL
-    };
+    return initialState();
+    //   return {
+    //     HeaderTitle: "",
+    //     PlanId: "", //プランID
+    //     ProviderId: "", //事業者ID
+    //     PublicStatus: "", //公開ステータス
+    //     PlanTitle: "", //プランタイトル
+    //     PlanStartDate: "", //プラン開始日
+    //     PlanEndDate: "", //プラン終了日
+    //     PublicStartDate: "", //公開開始日
+    //     PublicEndDate: "", //公開終了日
+    //     PlanAddress: "", //会場住所
+    //     Access: "", //アクセス
+    //     Overview: "", //概要
+    //     Contents: "", //プラン内容
+    //     Fee_Adult: 0, //大人料金
+    //     Fee_Child: 0, //児童料金
+    //     Fee_Infant: 0, //幼児料金
+    //     DeleteFlg: 0, //削除フラグ
+    //     MeetingPlace: "", //集合場所
+    //     TimeRequired: "", //所要時間
+    //     MaxApplicantsNum: 0, //最大申込人数
+    //     PlanCourse: "", // コース
+    //     HiddenFlg: false, // 非表示フラグ
+    //     AllPersonFlg: false, // 全個人情報フラグ
+    //     CancelPolicy: "", // キャンセルポリシー
+    //     AcceptDates: [], //受付可能日付
+    //     SelectedCategoryIds: [], //カテゴリ
+    //     SelectedAreaIds: [], //選択エリア
+    //     TopImage: null, //選択済み トップ画像エンティティ
+    //     TempImages: [], //選択済み 添付イメージファイルリスト
+    //     SelectedTopImageFileName: null, //※登録用 画面選択された トップ画像 ファイル名
+    //     TopImageUrl: "", //※初期表示用 選択済 トップ画像URL
+    //   };
   },
   validations: {
     PlanTitle: { required, maxLength: maxLength(100) }, //プランタイトル
@@ -887,6 +924,9 @@ export default {
       return value >= _this.PlanStartDate;
     },
     OpenAdd: function () {
+      //一旦フォームをクリア
+      Object.assign(this.$data, initialState());
+
       var editItem = new PlanInfo();
 
       editItem.PlanId = -1;
@@ -906,6 +946,7 @@ export default {
 
       //トップ画像
       this.TopImage = null;
+      this.TopImageUrl = null;
 
       //添付画像群
       this.TempImages = [];
@@ -914,6 +955,9 @@ export default {
       this.HeaderTitle = "プラン " + this.EditModeName;
     },
     OpenEdit: async function (editItem) {
+      //一旦フォームをクリア
+      Object.assign(this.$data, initialState());
+
       try {
         //プラン情報のGET
         var planModel = await ProviderBiz.GetPlanModel(editItem.PlanId);
@@ -932,6 +976,9 @@ export default {
         this.SelectedAreaIds = planModel.SelectedAreaIds;
 
         //トップ画像
+        this.TopImage = null;
+        this.TopImageUrl = null;
+
         if (planModel.TopImage != null) {
           this.TopImage = planModel.TopImage;
           this.TopImageUrl =

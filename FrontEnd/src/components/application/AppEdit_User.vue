@@ -315,7 +315,7 @@ hr {
       </b-col>
     </b-row>
     <b-row>
-      <b-col cols="5">
+      <b-col cols="8">
         <!-- 年 -->
         <b-input-group>
           <b-form-select

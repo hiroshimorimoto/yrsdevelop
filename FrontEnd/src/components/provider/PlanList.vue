@@ -56,25 +56,27 @@
       </template>
       <!-- プラン開始日 -->
       <template v-slot:cell(PlanStartDate)="row">
-        <p>{{_getFormatDateTime(row.item.PlanStartDate)}}</p>
+        <p>{{ _getFormatDateTime(row.item.PlanStartDate) }}</p>
       </template>
       <!-- プラン終了日 -->
       <template v-slot:cell(PlanEndDate)="row">
-        <p>{{_getFormatDateTime(row.item.PlanEndDate)}}</p>
+        <p>{{ _getFormatDateTime(row.item.PlanEndDate) }}</p>
       </template>
       <!-- 公開開始日 -->
       <template v-slot:cell(PublicStartDate)="row">
-        <p>{{_getFormatDateTime(row.item.PublicStartDate)}}</p>
+        <p>{{ _getFormatDateTime(row.item.PublicStartDate) }}</p>
       </template>
       <!-- 公開終了日 -->
       <template v-slot:cell(PubcliEndDate)="row">
-        <p>{{_getFormatDateTime(row.item.PubcliEndDate)}}</p>
+        <p>{{ _getFormatDateTime(row.item.PubcliEndDate) }}</p>
       </template>
     </b-table>
     <div>
       <b-row>
         <b-col class="text-center">
-          <b-button size="m" variant="success" @click="doAdd">新規作成</b-button>
+          <b-button size="m" variant="success" @click="doAdd"
+            >新規作成</b-button
+          >
         </b-col>
       </b-row>
     </div>
@@ -110,8 +112,8 @@ const fields = [
   { key: "Overview", label: "概要" },
   { key: "PlanStartDate", label: "プラン開始日", sortable: true },
   { key: "PlanEndDate", label: "プラン終了日", sortable: true },
-  { key: "PublicStartDate", label: "公開開始日", sortable: true },
-  { key: "PubcliEndDate", label: "公開終了日", sortable: true },
+  // { key: "PublicStartDate", label: "公開開始日", sortable: true },
+  // { key: "PubcliEndDate", label: "公開終了日", sortable: true },
   { key: "delete-control", label: "" },
 ];
 

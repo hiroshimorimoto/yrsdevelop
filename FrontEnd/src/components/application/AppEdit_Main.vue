@@ -28,7 +28,7 @@ DIV.bank-info {
     </b-row>
     <b-row>
       <!-- 参加人数 大人 -->
-      <b-col cols="2">
+      <b-col cols="4">
         <b-input-group>
           <b-input-group-prepend>
             <b-input-group-text
@@ -81,7 +81,7 @@ DIV.bank-info {
       </b-col>
 
       <!-- 参加人数 子供 -->
-      <b-col cols="2">
+      <b-col cols="4">
         <b-input-group>
           <b-input-group-prepend>
             <b-input-group-text
@@ -119,7 +119,7 @@ DIV.bank-info {
       </b-col>
 
       <!-- 参加人数 幼児 -->
-      <b-col cols="2">
+      <b-col cols="4">
         <b-input-group>
           <b-input-group-prepend>
             <b-input-group-text
@@ -248,9 +248,9 @@ DIV.bank-info {
         >
           <b-form-radio value="0">クレジットカード払い</b-form-radio>
           <br />
-          <b-form-radio value="2">現地支払</b-form-radio><br />
+          <!-- <b-form-radio value="2">現地支払</b-form-radio><br /> -->
           <b-form-radio value="1" v-if="AppEditModel.EnableBankPay">
-            銀行振込
+            銀行振込（振込手数料はお客様のご負担となります）
           </b-form-radio>
           <br v-if="AppEditModel.EnableBankPay" />
         </b-form-radio-group>
