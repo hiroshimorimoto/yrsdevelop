@@ -5,7 +5,7 @@
 @using YrsWeb.Lib.Common;
 @using YrsWeb;
 @{
-ApplicationUser mainUser = Model.ApplicationUsers[0];
+    ApplicationUser mainUser = Model.ApplicationUsers[0];
 }
 @mainUser.UserName_Full（@mainUser.UserRuby_Full） 様
 
@@ -33,23 +33,23 @@ ApplicationUser mainUser = Model.ApplicationUsers[0];
 
 @if (!String.IsNullOrEmpty(Model.ApplicationHeader.CheckInTime))
 {
-<text>
-■チェックイン時間
-＠Model.ApplicationHeader.CheckInTime
-</text>
+    <text>
+        ■チェックイン時間
+        ＠Model.ApplicationHeader.CheckInTime
+    </text>
 }
 
 ■お申込ツアー
 @for (int i = 0; i < Model.ApplicationPlans.Count; i++)
 {
-ApplicationPlan appPlan = Model.ApplicationPlans[i];
-PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
-String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
-<text>
-@planModel.PlanInfo.PlanTitle
-ツアー催行日：@acceptDateStr
-ツアー詳細情報：@planModel.PlanInfo.PlanPageUrl
-</text>
+    ApplicationPlan appPlan = Model.ApplicationPlans[i];
+    PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
+    String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
+    <text>
+        @planModel.PlanInfo.PlanTitle
+        ツアー催行日：@acceptDateStr
+        ツアー詳細情報：@planModel.PlanInfo.PlanPageUrl
+    </text>
 }
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -57,16 +57,16 @@ String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 @for (int i = 0; i < Model.ApplicationPlans.Count; i++)
 {
-ApplicationHeader header = Model.ApplicationHeader;
-ApplicationPlan appPlan = Model.ApplicationPlans[i];
-PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
-String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
-<text>
-@planModel.PlanInfo.PlanTitle（@acceptDateStr）
-大人料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Adult))円 ×　@(header.Num_Adult)名
-子供料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Child))円 ×　@(header.Num_Child)名
-幼児料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Infant))円 ×　@(header.Num_Infant)名
-</text>
+    ApplicationHeader header = Model.ApplicationHeader;
+    ApplicationPlan appPlan = Model.ApplicationPlans[i];
+    PublicPlanModel planModel = Model.PlanModelList.SingleOrDefault(e => e.PlanInfo.PlanId == appPlan.PlanId);
+    String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
+    <text>
+        @planModel.PlanInfo.PlanTitle（@acceptDateStr）
+        大人料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Adult))円 ×　@(header.Num_Adult)名
+        子供料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Child))円 ×　@(header.Num_Child)名
+        幼児料金 ：　@(Statics.GetCommaNum(appPlan.Fee_Infant))円 ×　@(header.Num_Infant)名
+    </text>
 }
 ------------------------------
 合計 ：　@(Statics.GetCommaNum(Model.GetSumFee()))円
@@ -75,26 +75,26 @@ String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
 @(Model.ApplicationHeader.PaymentMethodTitle)
 @if (Model.ApplicationHeader.PaymentMethods == 1)
 {
-<text>
-ゆうちょ銀行へのお振込となりますため、
-ゆうちょ銀行からお振込の場合と他銀行からお振込の場合で情報が異なります。
-ご注意ください。
-また、お申込者様とお振込者様名が異なる場合はご連絡をお願い致します。
+    <text>
+        ゆうちょ銀行へのお振込となりますため、
+        ゆうちょ銀行からお振込の場合と他銀行からお振込の場合で情報が異なります。
+        ご注意ください。
+        また、お申込者様とお振込者様名が異なる場合はご連絡をお願い致します。
 
-ゆうちょ銀行からのお振込
-記号：14520
-番号：26679071
-口座名義人（カナ）：イッパンホウジン ヨシノビジターズビューロー
-口座名義人（漢字）:一般社団法人 吉野ビジターズビューロー
+        ゆうちょ銀行からのお振込
+        記号：14520
+        番号：26679071
+        口座名義人（カナ）：イッパンホウジン ヨシノビジターズビューロー
+        口座名義人（漢字）:一般社団法人 吉野ビジターズビューロー
 
-他銀行からのお振込
-銀行名：ゆうちょ銀行
-支店名：四五八
-店番号：458
-口座番号：（普通）2667907
-口座名義人（カナ）：イッパンホウジン ヨシノビジターズビューロー
-口座名義人（漢字）:一般社団法人 吉野ビジターズビューロー
-</text>
+        他銀行からのお振込
+        銀行名：ゆうちょ銀行
+        支店名：四五八
+        店番号：458
+        口座番号：（普通）2667907
+        口座名義人（カナ）：イッパンホウジン ヨシノビジターズビューロー
+        口座名義人（漢字）:一般社団法人 吉野ビジターズビューロー
+    </text>
 }
 
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
@@ -115,19 +115,19 @@ String acceptDateStr = appPlan.AcceptDate.ToString("yyyy/MM/dd");
 @mainUser.UserMailAddress
 @for (int i = 1; i < Model.ApplicationUsers.Count; i++)
 {
-ApplicationUser subUser = Model.ApplicationUsers[i];
-<text>
-= = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-■お名前
-@subUser.UserName_Full（@subUser.UserRuby_Full）
-■ご住所
-〒@subUser.ZipCode
-@subUser.UserAddress_Full
-■生年月日
-@subUser.BirthDateStr（@(subUser.Age)歳）
-■お電話番号
-@subUser.UserPhone1
-</text>
+    ApplicationUser subUser = Model.ApplicationUsers[i];
+    <text>
+        = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+        ■お名前
+        @subUser.UserName_Full（@subUser.UserRuby_Full）
+        ■ご住所
+        〒@subUser.ZipCode
+        @subUser.UserAddress_Full
+        ■生年月日
+        @subUser.BirthDateStr（@(subUser.Age)歳）
+        ■お電話番号
+        @subUser.UserPhone1
+    </text>
 }
 
 

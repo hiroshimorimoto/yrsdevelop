@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Develop\\YRS_DEV\\YrsWeb\\YrsWeb.csproj": {}
+    "C:\\Develop\\YRS\\YrsWeb\\YrsWeb.csproj": {}
   },
   "projects": {
-    "C:\\Develop\\YRS_DEV\\YrsWeb.Lib\\YrsWeb.Lib.csproj": {
+    "C:\\Develop\\YRS\\YrsWeb.Lib\\YrsWeb.Lib.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Develop\\YRS_DEV\\YrsWeb.Lib\\YrsWeb.Lib.csproj",
+        "projectUniqueName": "C:\\Develop\\YRS\\YrsWeb.Lib\\YrsWeb.Lib.csproj",
         "projectName": "YrsWeb.Lib",
-        "projectPath": "C:\\Develop\\YRS_DEV\\YrsWeb.Lib\\YrsWeb.Lib.csproj"
+        "projectPath": "C:\\Develop\\YRS\\YrsWeb.Lib\\YrsWeb.Lib.csproj"
       },
       "frameworks": {
         "net472": {}
       }
     },
-    "C:\\Develop\\YRS_DEV\\YrsWeb\\YrsWeb.csproj": {
+    "C:\\Develop\\YRS\\YrsWeb\\YrsWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Develop\\YRS_DEV\\YrsWeb\\YrsWeb.csproj",
+        "projectUniqueName": "C:\\Develop\\YRS\\YrsWeb\\YrsWeb.csproj",
         "projectName": "YrsWeb",
-        "projectPath": "C:\\Develop\\YRS_DEV\\YrsWeb\\YrsWeb.csproj",
+        "projectPath": "C:\\Develop\\YRS\\YrsWeb\\YrsWeb.csproj",
         "packagesPath": "C:\\Users\\hmori\\.nuget\\packages\\",
-        "outputPath": "C:\\Develop\\YRS_DEV\\YrsWeb\\obj\\",
+        "outputPath": "C:\\Develop\\YRS\\YrsWeb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
           "C:\\Users\\hmori\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -43,8 +45,8 @@
           "net472": {
             "targetAlias": "net472",
             "projectReferences": {
-              "C:\\Develop\\YRS_DEV\\YrsWeb.Lib\\YrsWeb.Lib.csproj": {
-                "projectPath": "C:\\Develop\\YRS_DEV\\YrsWeb.Lib\\YrsWeb.Lib.csproj"
+              "C:\\Develop\\YRS\\YrsWeb.Lib\\YrsWeb.Lib.csproj": {
+                "projectPath": "C:\\Develop\\YRS\\YrsWeb.Lib\\YrsWeb.Lib.csproj"
               }
             }
           }
@@ -120,7 +122,7 @@
               "version": "[3.10.0, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

@@ -17,10 +17,6 @@ namespace YrsWeb
 {
 	public class Startup
 	{
-#if DEBUG
-        private readonly string CorsPolicyName = "CorsPolicyName";
-#endif
-
 		internal static string DB_PREFIX;
 
 		public Startup(IConfiguration configuration)
@@ -121,13 +117,14 @@ namespace YrsWeb
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-#if DEBUG
-            app.UseCors(CorsPolicyName);
-#endif
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
 			}
+
+#if DEBUG
+			app.UseOptionsMiddleware();
+#endif
 
 			//インメモリ セッション を有効化
 			app.UseSession();
